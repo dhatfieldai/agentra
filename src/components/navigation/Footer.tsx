@@ -1,36 +1,65 @@
-// src/components/navigation/Footer.tsx
+// ✅ src/components/navigation/Footer.tsx
 
 import Link from "next/link";
-import { Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-center border-t border-gray-200 text-gray-700 text-sm w-full fixed bottom-0 left-0 z-50 py-6">
-      <div className="mb-2">
-        © {new Date().getFullYear()} AURORA9. All rights reserved.
+    <footer className="bg-gray-100 dark:bg-zinc-900 text-gray-800 dark:text-gray-300 py-12 border-t border-zinc-200 dark:border-zinc-700">
+      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+        {/* Left Column */}
+        <div className="space-y-2">
+          <FooterLink href="/about">About Us</FooterLink>
+          <FooterLink href="/careers">Careers</FooterLink>
+          <FooterLink href="/contact-us">Contact Us</FooterLink>
+          <FooterLink href="/faq">FAQ</FooterLink>
+          <FooterLink href="/how-it-works">How It Works</FooterLink>
+        </div>
+
+        {/* Center Column */}
+        <div className="space-y-2">
+          <FooterLink href="/investors">Investors</FooterLink>
+          <FooterLink href="/press">Press</FooterLink>
+          <FooterLink href="/pricing">Pricing</FooterLink>
+          <FooterLink href="/privacy-policy">Privacy Policy</FooterLink>
+          <FooterLink href="/sitemap">Sitemap</FooterLink>
+        </div>
+
+        {/* Right Column */}
+        <div className="space-y-2">
+          <FooterLink href="/terms">Terms</FooterLink>
+          <a
+            href="mailto:aurora9ai@gmail.com"
+            className="hover:underline hover:text-indigo-600 transition-colors"
+          >
+            Email Us
+          </a>
+          <a
+            href="https://github.com/Oasis11217AI/aurora9agenticAI"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline hover:text-indigo-600 transition-colors"
+          >
+            GitHub Repository
+          </a>
+          <FooterLink href="/blog">Blog</FooterLink>
+          <FooterLink href="/join-waitlist">Join Waitlist</FooterLink>
+        </div>
       </div>
 
-      <div className="flex justify-center items-center space-x-2 mb-2">
-        <Link
-          href="https://www.linkedin.com/in/aurora9-ai-agent-09a253364/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center space-x-2 hover:text-blue-600"
-        >
-          <Linkedin size={32} className="text-blue-700" />
-          <span className="font-medium">Follow us on LinkedIn</span>
-        </Link>
-      </div>
-
-      <div className="space-x-4">
-        <Link href="/terms" className="hover:underline">Terms</Link>
-        <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
-        <Link href="/contact-us" className="hover:underline">Contact Us</Link>
-        <Link href="/investors" className="hover:underline">Investors</Link>
-        <Link href="/press" className="hover:underline">Press</Link>
-        <Link href="/faq" className="hover:underline">FAQ</Link>
-        <Link href="/sitemap" className="hover:underline">Sitemap</Link>
+      <div className="text-center text-xs text-gray-500 dark:text-zinc-500 mt-10">
+        &copy; {new Date().getFullYear()} AURORA9. All rights reserved.
       </div>
     </footer>
+  );
+}
+
+function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className="block hover:underline hover:text-indigo-600 transition-colors"
+    >
+      {children}
+    </Link>
   );
 }
