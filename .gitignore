@@ -1,41 +1,107 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
+# -------------------------------------------------------
+# 🚀 General Dependencies & Package Managers
+# -------------------------------------------------------
+node_modules/
+bower_components/
+jspm_packages/
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
+!.yarn/sdks
 !.yarn/versions
+.pnp.*
+.pnpm-debug.log*
+.yarn-integrity
+package-lock.json
+yarn.lock
 
-# testing
-/coverage
+# -------------------------------------------------------
+# 🧪 Testing & Coverage
+# -------------------------------------------------------
+coverage/
+*.lcov
+.nyc_output
+.vitest
+.vitest_cache
 
-# next.js
-/.next/
-/out/
+# -------------------------------------------------------
+# 📦 Build Output & Bundlers
+# -------------------------------------------------------
+dist/
+build/
+out/
+.next/
+.nuxt/
+.vuepress/dist
+.svelte-kit/
+.docusaurus
+.web_modules/
+.cache/
+.parcel-cache/
+.vitepress/
+**/.vitepress/dist
+**/.vitepress/cache
 
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
+# -------------------------------------------------------
+# 💾 Caches & Logs
+# -------------------------------------------------------
+.cache/
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+lerna-debug.log*
+.eslintcache
+.stylelintcache
+.vscode-test
+.vite.config.js.timestamp-*
+.vite.config.ts.timestamp-*
 
-# env files (can opt-in for committing if needed)
-.env*
+# -------------------------------------------------------
+# 🌐 Environment Files
+# -------------------------------------------------------
+.env
+.env.*
+!.env.example
 
-# vercel
-.vercel
+# -------------------------------------------------------
+# 🔐 Security & Secrets
+# -------------------------------------------------------
+*.pem
 
-# typescript
+# -------------------------------------------------------
+# ⚙️ Config / Build Artifacts
+# -------------------------------------------------------
 *.tsbuildinfo
+.next/
+out/
 next-env.d.ts
+
+# -------------------------------------------------------
+# 🧪 Reports & Misc
+# -------------------------------------------------------
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+*.seed
+*.pid
+*.pid.lock
+lib-cov
+.lock-wscript
+.node_repl_history
+*.tgz
+.DS_Store
+.tern-port
+
+# -------------------------------------------------------
+# 🔧 IDE & Dev Tools
+# -------------------------------------------------------
+.vscode/
+.vercel/
+.serverless/
+.fusebox/
+.dynamodb/
+.firebase/
+.temp/
