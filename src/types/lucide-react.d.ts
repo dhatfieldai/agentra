@@ -25,6 +25,7 @@ declare module 'lucide-react' {
   export const Target: ComponentType<IconProps>;
   export const Trending: ComponentType<IconProps>;
   export const BarChart: ComponentType<IconProps>;
+  export const BarChart3: ComponentType<IconProps>;
   export const Settings: ComponentType<IconProps>;
   export const Clock: ComponentType<IconProps>;
   export const Globe: ComponentType<IconProps>;
@@ -70,6 +71,12 @@ declare module 'lucide-react' {
   export const Facebook: ComponentType<IconProps>;
   export const Instagram: ComponentType<IconProps>;
   export const Youtube: ComponentType<IconProps>;
+  export const Brain: ComponentType<IconProps>;
+  export const Play: ComponentType<IconProps>;
+  export const Award: ComponentType<IconProps>;
+  export const Sparkles: ComponentType<IconProps>;
+  export const Moon: ComponentType<IconProps>;
+  export const Sun: ComponentType<IconProps>;
   
   // Default export (if needed)
   const lucideReact: {
