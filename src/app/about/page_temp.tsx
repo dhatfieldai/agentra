@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 
 export default function AboutUsPage() {
@@ -46,7 +45,7 @@ export default function AboutUsPage() {
             </p>
           </motion.div>
 
-          {/* About Us Features Grid */}
+          {/* Key Features Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -78,7 +77,7 @@ export default function AboutUsPage() {
               </div>
               <h3 className="text-xl font-bold text-white mb-4">Scalable Growth</h3>
               <p className="text-gray-300">
-                Built to grow with your business, from startup to enterprise, with AI that adapts to your evolving needs.
+                Whether managing thousands of SKUs or just starting out, our platform scales seamlessly with your business growth.
               </p>
             </motion.div>
 
@@ -88,32 +87,32 @@ export default function AboutUsPage() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10"
             >
-              <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-blue-500 rounded-lg flex items-center justify-center mb-6">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100-4m0 4v2m0-6V4" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Always Learning</h3>
+              <h3 className="text-xl font-bold text-white mb-4">Adaptive Intelligence</h3>
               <p className="text-gray-300">
-                Our AI continuously learns from your business patterns to optimize performance and predict opportunities.
+                Our AI continuously learns from market trends, customer behavior, and business performance to optimize strategies.
               </p>
             </motion.div>
           </div>
 
-          {/* Company Story */}
+          {/* Mission Statement */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="bg-white/5 backdrop-blur-sm rounded-2xl p-10 border border-white/10"
+            className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl p-10 border border-white/20 text-center"
           >
-            <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent text-center">
-              Our Story
+            <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Our Mission
             </h2>
-            <p className="text-lg text-gray-300 leading-relaxed text-center">
-              Founded with the vision of democratizing advanced AI technology for e-commerce, AURORA9 bridges the gap 
-              between cutting-edge artificial intelligence and practical business applications. We believe every business 
-              deserves access to world-class AI automation, regardless of size or technical expertise.
+            <p className="text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
+              To democratize the power of Agentic AI for every entrepreneur, brand, and enterprise looking to 
+              thrive in the new era of autonomous commerce. We believe that intelligent automation should be 
+              accessible, powerful, and transformative for businesses of all sizes.
             </p>
           </motion.div>
         </div>

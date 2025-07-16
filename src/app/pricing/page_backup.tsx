@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export default function MissionStatementPage() {
+export default function PricingPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 pt-20">
       <div className="container mx-auto px-6 py-16">
@@ -14,10 +14,10 @@ export default function MissionStatementPage() {
           className="text-center mb-16"
         >
           <h1 className="text-5xl md:text-6xl font-extrabold mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Our Mission
+            Choose Your Plan
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Empowering the future of autonomous e-commerce through intelligent AI innovation
+            Select the perfect AURORA9 plan to revolutionize your e-commerce automation
           </p>
         </motion.div>
 
