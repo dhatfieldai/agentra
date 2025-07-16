@@ -113,7 +113,7 @@ export default function PrivacyPolicyPage() {
             </div>
           </motion.div>
 
-          {/* Contact Information - WORKING VERSION */}
+          {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,20 +127,9 @@ export default function PrivacyPolicyPage() {
               If you have any questions about this privacy policy or how we handle your data, 
               please contact our privacy team.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/contact-us"
-                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 text-center no-underline"
-              >
-                Contact Privacy Team
-              </a>
-              <a 
-                href="/contact-us"
-                className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-8 rounded-xl border border-gray-600 hover:border-gray-500 transition-all duration-300 text-center no-underline"
-              >
-                Data Protection Rights
-              </a>
-            </div>
+            <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold py-3 px-8 rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all">
+              Contact Privacy Team
+            </button>
           </motion.div>
         </div>
       </div>

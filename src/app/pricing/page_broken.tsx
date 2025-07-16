@@ -58,12 +58,9 @@ export default function PricingPage() {
               </li>
             </ul>
 
-            <a 
-              href="/contact-us"
-              className="w-full py-4 px-6 rounded-lg font-semibold transition-all duration-300 bg-gray-800 hover:bg-gray-700 text-white border border-gray-600 hover:border-gray-500 block text-center"
-            >
+            <button className="w-full py-4 px-6 rounded-lg font-semibold transition-all duration-300 bg-gray-800 hover:bg-gray-700 text-white border border-gray-600 hover:border-gray-500">
               Join Waitlist
-            </a>
+            </button>
           </motion.div>
 
           {/* Professional Plan */}
@@ -106,12 +103,9 @@ export default function PricingPage() {
               </li>
             </ul>
 
-            <a 
-              href="/contact-us"
-              className="w-full py-4 px-6 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white block text-center"
-            >
+            <button className="w-full py-4 px-6 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white">
               Join Waitlist
-            </a>
+            </button>
           </motion.div>
 
           {/* Enterprise Plan */}
@@ -148,12 +142,9 @@ export default function PricingPage() {
               </li>
             </ul>
 
-            <a 
-              href="/contact-us"
-              className="w-full py-4 px-6 rounded-lg font-semibold transition-all duration-300 bg-gray-800 hover:bg-gray-700 text-white border border-gray-600 hover:border-gray-500 block text-center"
-            >
+            <button className="w-full py-4 px-6 rounded-lg font-semibold transition-all duration-300 bg-gray-800 hover:bg-gray-700 text-white border border-gray-600 hover:border-gray-500">
               Contact Sales
-            </a>
+            </button>
           </motion.div>
         </div>
 
