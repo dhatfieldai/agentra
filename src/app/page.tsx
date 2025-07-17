@@ -10,14 +10,14 @@ export default function Home() {
   return (
     <>
       <DarkModeToggle />
-      <main className="pt-20 bg-white dark:bg-gray-900 text-gray-800 dark:text-white">
+      <main className="pt-20" style={{ background: 'var(--background)', color: 'var(--foreground)' }}>
         {/* Enhanced Hero Section */}
-        <section className="relative text-center py-32 px-6 bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700 text-white overflow-hidden min-h-screen flex items-center">
+        <section className="relative text-center py-32 px-6 text-white overflow-hidden min-h-screen flex items-center" style={{ background: 'var(--gradient-cosmic)' }}>
           {/* Animated background elements */}
           <div className="absolute inset-0">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
-            <div className="absolute top-40 right-10 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style={{ animationDelay: '2s' }}></div>
-            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style={{ animationDelay: '4s' }}></div>
+            <div className="absolute top-20 left-10 w-72 h-72 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float" style={{ background: 'var(--primary)' }}></div>
+            <div className="absolute top-40 right-10 w-72 h-72 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float" style={{ background: 'var(--accent)', animationDelay: '2s' }}></div>
+            <div className="absolute -bottom-8 left-20 w-72 h-72 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float" style={{ background: 'var(--secondary)', animationDelay: '4s' }}></div>
           </div>
           
           <motion.div
@@ -26,35 +26,35 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="max-w-6xl mx-auto relative z-10"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="text-display mb-6 leading-tight">
+              <span className="gradient-text">
                 The Future of E-commerce AI is Autonomous
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl font-medium mb-16 text-purple-100 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-body-large mb-16 max-w-4xl mx-auto leading-relaxed" style={{ color: '#cbd5e1' }}>
               AURORA9 deploys a fully autonomous Agentic AI workforce that transforms your e-commerce business into a 
-              <span className="text-cyan-300 font-semibold"> self-optimizing growth engine</span>. 
+              <span className="font-semibold" style={{ color: 'var(--accent)' }}> self-optimizing growth engine</span>. 
               Experience effortless scaling with predictive intelligence that stays ahead of the market.
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div className="space-y-2">
-                <div className="text-3xl md:text-4xl font-bold text-cyan-300">10,000+</div>
-                <div className="text-purple-200 text-sm">Early Adopters</div>
+                <div className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--accent)' }}>10,000+</div>
+                <div className="text-small" style={{ color: '#cbd5e1' }}>Early Adopters</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl md:text-4xl font-bold text-cyan-300">300%</div>
-                <div className="text-purple-200 text-sm">Avg ROI Increase</div>
+                <div className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--accent)' }}>300%</div>
+                <div className="text-small" style={{ color: '#cbd5e1' }}>Avg ROI Increase</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl md:text-4xl font-bold text-cyan-300">99.9%</div>
-                <div className="text-purple-200 text-sm">Uptime</div>
+                <div className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--accent)' }}>99.9%</div>
+                <div className="text-small" style={{ color: '#cbd5e1' }}>Uptime</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl md:text-4xl font-bold text-cyan-300">24/7</div>
-                <div className="text-purple-200 text-sm">Autonomous</div>
+                <div className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--accent)' }}>24/7</div>
+                <div className="text-small" style={{ color: '#cbd5e1' }}>Autonomous</div>
               </div>
             </div>
           </motion.div>
@@ -67,20 +67,21 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="py-24 px-6 bg-gradient-to-r from-purple-900 via-indigo-900 to-blue-900 dark:from-purple-950 dark:via-indigo-950 dark:to-blue-950 text-white relative overflow-hidden"
+          className="py-24 px-6 text-white relative overflow-hidden"
+          style={{ background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)' }}
         >
           {/* Background animation */}
           <div className="absolute inset-0 opacity-10">
-            <div className="w-96 h-96 bg-cyan-500 rounded-full absolute top-20 -left-20 animate-pulse-slow"></div>
-            <div className="w-64 h-64 bg-purple-500 rounded-full absolute bottom-20 -right-10 animate-float"></div>
+            <div className="w-96 h-96 rounded-full absolute top-20 -left-20 animate-pulse-slow" style={{ background: 'var(--accent)' }}></div>
+            <div className="w-64 h-64 rounded-full absolute bottom-20 -right-10 animate-float" style={{ background: 'var(--secondary)' }}></div>
           </div>
 
           <div className="max-w-4xl mx-auto text-center relative z-10">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-heading-1 mb-6">
               Be First to Access the Future
-              <span className="block text-cyan-300">of E-commerce Automation</span>
+              <span className="block" style={{ color: 'var(--accent)' }}>of E-commerce Automation</span>
             </h2>
-            <p className="text-xl text-purple-100 mb-8 leading-relaxed">
+            <p className="text-body-large mb-8 leading-relaxed" style={{ color: '#cbd5e1' }}>
               Join 10,000+ forward-thinking entrepreneurs on the AURORA9 waitlist. 
               Get exclusive early access, special pricing, and be the first to transform your business.
             </p>

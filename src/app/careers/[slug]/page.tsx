@@ -103,20 +103,29 @@ export default function JobDetailsPage() {
         <title>{job.title} | AURORA9 Careers</title>
         <meta name="description" content={`Apply for the ${job.title} role at AURORA9`} />
       </Head>
-      <main className="max-w-3xl mx-auto py-12 px-4 text-gray-800 dark:text-white">
+      <main className="max-w-3xl mx-auto py-12 px-4" style={{ color: 'var(--foreground)' }}>
         <Toaster />
-        <h1 className="text-4xl font-bold mb-4">{job.title}</h1>
-        <p className="text-sm text-gray-500 mb-8">
+        <h1 className="text-display mb-6 text-white text-center">{job.title}</h1>
+        <p className="text-body mb-8 text-center" style={{ color: '#cbd5e1' }}>
           Location: Remote | Department: {job.department}
         </p>
-        <article className="prose dark:prose-invert max-w-none mb-10">
+        <article className="mb-10 space-y-4">
           {job.description.map((para: string, idx: number) => (
-            <p key={idx}>{para}</p>
+            <p key={idx} className="text-body" style={{ color: '#cbd5e1' }}>{para}</p>
           ))}
         </article>
 
-        <form onSubmit={handleSubmit} className="space-y-4 bg-white dark:bg-zinc-900 p-6 rounded shadow">
-          <h2 className="text-xl font-semibold mb-4">Apply Now</h2>
+        <form 
+          onSubmit={handleSubmit} 
+          className="space-y-4 p-8 rounded-lg shadow-lg backdrop-blur-sm"
+          style={{ 
+            background: 'rgba(15, 23, 42, 0.6)', 
+            borderColor: 'rgba(59, 130, 246, 0.2)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(59, 130, 246, 0.2)'
+          }}
+        >
+          <h2 className="text-heading-2 mb-6 text-white">Apply Now</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
@@ -126,7 +135,11 @@ export default function JobDetailsPage() {
               required
               value={formData.firstName}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:border-zinc-600"
+              className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              style={{ 
+                background: 'rgba(30, 41, 59, 0.5)', 
+                border: '1px solid rgba(59, 130, 246, 0.3)'
+              }}
             />
 
             <input
@@ -136,7 +149,11 @@ export default function JobDetailsPage() {
               required
               value={formData.lastName}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:border-zinc-600"
+              className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              style={{ 
+                background: 'rgba(30, 41, 59, 0.5)', 
+                border: '1px solid rgba(59, 130, 246, 0.3)'
+              }}
             />
           </div>
 
@@ -147,7 +164,11 @@ export default function JobDetailsPage() {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:border-zinc-600"
+            className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            style={{ 
+              background: 'rgba(30, 41, 59, 0.5)', 
+              border: '1px solid rgba(59, 130, 246, 0.3)'
+            }}
           />
 
           <input
@@ -157,7 +178,11 @@ export default function JobDetailsPage() {
             required
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:border-zinc-600"
+            className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            style={{ 
+              background: 'rgba(30, 41, 59, 0.5)', 
+              border: '1px solid rgba(59, 130, 246, 0.3)'
+            }}
           />
 
           <input
@@ -167,7 +192,11 @@ export default function JobDetailsPage() {
             required
             value={formData.address}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:border-zinc-600"
+            className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            style={{ 
+              background: 'rgba(30, 41, 59, 0.5)', 
+              border: '1px solid rgba(59, 130, 246, 0.3)'
+            }}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -178,7 +207,11 @@ export default function JobDetailsPage() {
               required
               value={formData.city}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:border-zinc-600"
+              className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              style={{ 
+                background: 'rgba(30, 41, 59, 0.5)', 
+                border: '1px solid rgba(59, 130, 246, 0.3)'
+              }}
             />
 
             <input
@@ -188,7 +221,11 @@ export default function JobDetailsPage() {
               required
               value={formData.state}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:border-zinc-600"
+              className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              style={{ 
+                background: 'rgba(30, 41, 59, 0.5)', 
+                border: '1px solid rgba(59, 130, 246, 0.3)'
+              }}
             />
 
             <input
@@ -198,7 +235,11 @@ export default function JobDetailsPage() {
               required
               value={formData.zipCode}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:border-zinc-600"
+              className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              style={{ 
+                background: 'rgba(30, 41, 59, 0.5)', 
+                border: '1px solid rgba(59, 130, 246, 0.3)'
+              }}
             />
           </div>
 
@@ -207,10 +248,14 @@ export default function JobDetailsPage() {
             required
             value={formData.country}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:border-zinc-600"
+            className="w-full px-4 py-3 rounded-lg text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            style={{ 
+              background: 'rgba(30, 41, 59, 0.5)', 
+              border: '1px solid rgba(59, 130, 246, 0.3)'
+            }}
           >
-            <option value="United States">United States</option>
-            <option value="Canada">Canada</option>
+            <option value="United States" className="bg-slate-800">United States</option>
+            <option value="Canada" className="bg-slate-800">Canada</option>
           </select>
 
           <textarea
@@ -220,35 +265,51 @@ export default function JobDetailsPage() {
             required
             value={formData.message}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:border-zinc-600"
+            className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            style={{ 
+              background: 'rgba(30, 41, 59, 0.5)', 
+              border: '1px solid rgba(59, 130, 246, 0.3)'
+            }}
           ></textarea>
 
           <div className="space-y-2">
-            <label className="block text-sm font-medium">Resume (Required)</label>
+            <label className="block text-body font-medium text-white">Resume (Required)</label>
             <input 
               type="file" 
               name="resume" 
               accept=".pdf,.doc,.docx" 
               required
               onChange={handleFileChange}
-              className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:border-zinc-600"
+              className="w-full px-4 py-3 rounded-lg text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-500 file:text-white hover:file:bg-blue-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              style={{ 
+                background: 'rgba(30, 41, 59, 0.5)', 
+                border: '1px solid rgba(59, 130, 246, 0.3)'
+              }}
             />
           </div>
 
           <div className="space-y-2">
-            <label className="block text-sm font-medium">Cover Letter (Optional)</label>
+            <label className="block text-body font-medium text-white">Cover Letter (Optional)</label>
             <input 
               type="file" 
               name="coverLetter" 
               accept=".pdf,.doc,.docx" 
               onChange={handleFileChange}
-              className="w-full px-4 py-2 border rounded dark:bg-zinc-800 dark:border-zinc-600"
+              className="w-full px-4 py-3 rounded-lg text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-500 file:text-white hover:file:bg-blue-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              style={{ 
+                background: 'rgba(30, 41, 59, 0.5)', 
+                border: '1px solid rgba(59, 130, 246, 0.3)'
+              }}
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded transition-colors"
+            className="w-full px-6 py-4 text-white text-body font-medium rounded-lg transition-all duration-300 hover:shadow-lg"
+            style={{ 
+              background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
+              boxShadow: '0 4px 15px rgba(59, 130, 246, 0.3)'
+            }}
           >
             Submit Application
           </button>

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -35,10 +34,10 @@ export default function Navbar() {
 
   const mainLinkClass = (href: string) => {
     const isActive = isActiveLink(href);
-    return `px-4 py-2 rounded-lg text-base font-bold transition-all duration-300 ${
+    return `px-4 py-2 rounded-lg text-base font-medium transition-all duration-300 ${
       isActive
-        ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg"
-        : "text-gray-800 dark:text-gray-200 hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:text-white hover:shadow-lg"
+        ? "text-white shadow-lg"
+        : "text-white hover:text-white hover:shadow-lg"
     }`;
   };
 
@@ -46,29 +45,39 @@ export default function Navbar() {
     const isActive = pathname === href;
     return `block px-4 py-3 text-sm font-medium transition-all duration-200 ${
       isActive
-        ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white"
-        : "text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-400 hover:to-cyan-300 hover:text-white"
+        ? "text-white"
+        : "text-white hover:text-white"
     }`;
   };
 
   return (
-    <nav className="bg-white dark:bg-zinc-900 shadow-lg border-b border-gray-200 dark:border-gray-700">
+    <nav className="shadow-lg border-b" style={{ background: 'var(--background)', borderColor: 'rgba(59, 130, 246, 0.2)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center hover:opacity-80 transition-opacity duration-200"
+            className="flex items-center hover:opacity-80 transition-all duration-300 group"
             aria-label="AURORA9 - Go to Homepage"
           >
-            <Image
-              src="/AURORA9.png"
-              alt="AURORA9 Logo"
-              width={120}
-              height={32}
-              className="object-contain"
-              priority
-            />
+            <div 
+              className="px-4 py-2 rounded-lg transition-all duration-300 group-hover:shadow-lg group-hover:scale-105"
+              style={{ 
+                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)',
+                border: '1px solid rgba(59, 130, 246, 0.2)'
+              }}
+            >
+              <span 
+                className="text-heading-2 font-bold tracking-wider"
+                style={{ 
+                  color: '#60a5fa',
+                  textShadow: '0 0 20px rgba(96, 165, 250, 0.6)',
+                  filter: 'brightness(1.2)'
+                }}
+              >
+                AURORA9
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Menu */}
@@ -91,7 +100,7 @@ export default function Navbar() {
                     
                     {/* Submenu Dropdown */}
                     {isAboutOpen && (
-                      <div className="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-zinc-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-600 py-2 z-50">
+                      <div className="absolute top-full left-0 mt-1 w-56 rounded-lg shadow-xl border py-2 z-50" style={{ background: 'var(--background)', borderColor: 'rgba(59, 130, 246, 0.2)' }}>
                         {item.submenu?.map((subItem) => (
                           <Link
                             key={subItem.href}
@@ -116,11 +125,12 @@ export default function Navbar() {
             <div className="relative group ml-2">
               <button
                 disabled
-                className="px-6 py-3 bg-gray-400 dark:bg-gray-600 text-white rounded-lg text-sm font-bold cursor-not-allowed opacity-60"
+                className="px-6 py-3 text-white rounded-lg text-sm font-medium cursor-not-allowed opacity-60"
+                style={{ background: '#64748b' }}
               >
                 Book a Demo
               </button>
-              <div className="absolute hidden group-hover:block bg-black text-white text-xs px-3 py-2 rounded-lg shadow-lg mt-2 w-64 z-50">
+              <div className="absolute hidden group-hover:block text-white text-xs px-3 py-2 rounded-lg shadow-lg mt-2 w-64 z-50" style={{ background: 'var(--bg-tertiary)' }}>
                 Coming Soon – Subscribe to our waiting list to receive launch notification
               </div>
             </div>
@@ -129,7 +139,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors duration-200"
+            className="md:hidden text-white hover:opacity-80 p-2 rounded-lg transition-opacity duration-200"
             aria-label="Toggle Menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -138,14 +148,14 @@ export default function Navbar() {
 
         {/* Mobile Dropdown Menu */}
         {isOpen && (
-          <div className="md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900">
+          <div className="md:hidden border-t" style={{ borderColor: 'rgba(59, 130, 246, 0.2)', background: 'var(--background)' }}>
             <div className="px-4 py-4 space-y-3">
               {mainNavItems.map((item) => (
                 <div key={item.label}>
                   <Link
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="block py-3 px-4 rounded-lg text-base font-bold text-gray-800 dark:text-gray-200 hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:text-white transition-all duration-300"
+                    className="block py-3 px-4 rounded-lg text-base font-medium text-white hover:opacity-80 transition-opacity duration-300"
                   >
                     {item.label}
                   </Link>

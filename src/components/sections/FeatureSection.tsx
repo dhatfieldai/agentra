@@ -93,7 +93,7 @@ const FeatureSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <section className="py-20" style={{ background: 'var(--background)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -101,10 +101,10 @@ const FeatureSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-heading-1 text-white mb-4">
             Core Features
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-body-large max-w-3xl mx-auto" style={{ color: '#cbd5e1' }}>
             Discover the powerful AI capabilities that drive innovation and transform your business operations.
           </p>
         </motion.div>
@@ -126,16 +126,16 @@ const FeatureSection = () => {
               }}
               className="relative group"
             >
-              <div className="relative p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 overflow-hidden">
+              <div className="relative p-8 glass-effect rounded-2xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
                 {/* Gradient border on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" 
-                     style={{ padding: '2px' }}>
-                  <div className="h-full w-full bg-white dark:bg-gray-800 rounded-2xl p-6">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" 
+                     style={{ background: 'var(--gradient-aurora)', padding: '2px' }}>
+                  <div className="h-full w-full rounded-2xl p-6" style={{ background: 'var(--background)' }}>
                     <div className="text-4xl mb-4">{feature.icon}</div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text transition-all duration-300">
+                    <h3 className="text-heading-2 text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text transition-all duration-300">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p className="text-body leading-relaxed" style={{ color: '#cbd5e1' }}>
                       {feature.description}
                     </p>
                   </div>
@@ -144,10 +144,10 @@ const FeatureSection = () => {
                 {/* Default state content */}
                 <div className="group-hover:opacity-0 transition-opacity duration-300">
                   <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  <h3 className="text-heading-2 text-white mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <p className="text-body leading-relaxed" style={{ color: '#cbd5e1' }}>
                     {feature.description}
                   </p>
                 </div>

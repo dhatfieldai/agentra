@@ -216,14 +216,13 @@ export default function TermsPage() {
                   <ul className="space-y-2">
                     <li>• Secure deletion after retention period</li>
                     <li>• Backup data removed permanently</li>
-                    <li>• Compliance with data protection laws</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Contact Information - WORKING VERSION */}
+          {/* Contact Information */}
           <div className="backdrop-blur-md bg-gradient-to-br from-blue-900/60 to-purple-900/60 rounded-2xl p-8 border border-blue-400/50">
             <h2 className="text-3xl font-bold text-white mb-6 text-center">Questions About These Terms?</h2>
             <div className="text-center text-gray-300 space-y-4">
@@ -233,15 +232,9 @@ export default function TermsPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                 <a 
                   href="/contact-us"
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 text-center no-underline"
+                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 text-center"
                 >
                   Contact Legal Team
-                </a>
-                <a 
-                  href="/contact-us"
-                  className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg border border-gray-600 hover:border-gray-500 transition-all duration-300 text-center no-underline"
-                >
-                  Download Terms PDF
                 </a>
               </div>
             </div>

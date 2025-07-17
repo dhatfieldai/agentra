@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora9 - Design Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0b14;
+            color: #e2e8f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Professional Color Scheme - Dark Mode */
+        :root {
+            /* Primary Colors */
+            --bg-primary: #0a0b14;
+            --bg-secondary: #151926;
+            --bg-tertiary: #1e2139;
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            
+            /* Brand Colors */
+            --brand-primary: #3b82f6;
+            --brand-secondary: #6366f1;
+            --brand-accent: #06b6d4;
+            
+            /* Professional Gradients */
+            --gradient-primary: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            --gradient-text: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+        }
+
+        /* Typography System */
+        .text-display {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .text-heading-1 {
+            font-size: 2.25rem;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .text-heading-2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .text-body-large {
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .text-body {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .text-small {
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* Gradient text effect */
+        .gradient-text {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Layout Components */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(10, 11, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--brand-accent);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            padding: 8rem 0 4rem;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 4rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--bg-tertiary);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            background: var(--gradient-accent);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .text-display {
+                font-size: 2.5rem;
+            }
+            
+            .text-heading-1 {
+                font-size: 1.875rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 6rem 0 3rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">AURORA9</div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link">Home</a></li>
+                <li><a href="#" class="nav-link">About</a></li>
+                <li><a href="#" class="nav-link">Pricing</a></li>
+                <li><a href="#" class="nav-link">Use Cases</a></li>
+                <li><a href="#" class="nav-link">Features</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="#" class="btn btn-secondary">Contact Sales</a>
+                <a href="#" class="btn btn-primary">Log In</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="text-display hero-title">
+                    <span class="gradient-text">AI-Powered Solutions</span><br>
+                    for Autonomous Business Operations
+                </h1>
+                <p class="text-body-large hero-subtitle">
+                    Harness the Power of AI to Effortlessly Transform Your E-commerce Business into a Self-Optimizing Growth Engine
+                </p>
+                <div class="hero-actions">
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                    <a href="#" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 class="text-heading-1" style="margin-bottom: 1rem;">
+                    Professional Typography & <span class="gradient-text">Modern Design</span>
+                </h2>
+                <p class="text-body-large" style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+                    Clean, professional fonts with consistent hierarchy and sophisticated color scheme designed for enterprise AI platforms.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.07 2.07 0 0 1-2.44-2.44 2.07 2.07 0 0 1-2.44-2.44 2.07 2.07 0 0 1-2.44-2.44A2.5 2.5 0 0 1 2.5 9.5v-7A2.5 2.5 0 0 1 5 0h4.5Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-heading-2" style="margin-bottom: 0.75rem;">Inter Font Family</h3>
+                    <p class="text-body" style="color: var(--text-secondary);">
+                        Professional sans-serif designed specifically for digital interfaces with excellent readability at all sizes.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 12h8"/>
+                            <path d="M12 8v8"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-heading-2" style="margin-bottom: 0.75rem;">Dark Mode Design</h3>
+                    <p class="text-body" style="color: var(--text-secondary);">
+                        Sophisticated dark theme with carefully chosen contrast ratios for optimal accessibility and professional appearance.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M2 12h20"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-heading-2" style="margin-bottom: 0.75rem;">Consistent Hierarchy</h3>
+                    <p class="text-body" style="color: var(--text-secondary);">
+                        Uniform typography scale with defined weights and sizes creating clear visual hierarchy throughout the platform.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Typography Scale Demo -->
+            <div style="margin-top: 4rem; padding: 3rem; background: var(--bg-tertiary); border-radius: 1rem; border: 1px solid rgba(59, 130, 246, 0.1);">
+                <h3 class="text-heading-2" style="margin-bottom: 2rem; text-align: center;">Typography Scale Preview</h3>
+                
+                <div>
+                    <div>
+                        <p class="text-small" style="color: var(--text-muted); margin-bottom: 0.5rem;">Display Text (56px/700)</p>
+                        <h1 class="text-display">The Future of AI Business Automation</h1>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <p class="text-small" style="color: var(--text-muted); margin-bottom: 0.5rem;">Heading 1 (36px/600)</p>
+                        <h2 class="text-heading-1">Professional Enterprise Solutions</h2>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <p class="text-small" style="color: var(--text-muted); margin-bottom: 0.5rem;">Heading 2 (24px/600)</p>
+                        <h3 class="text-heading-2">Advanced AI Technology Stack</h3>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <p class="text-small" style="color: var(--text-muted); margin-bottom: 0.5rem;">Body Large (18px/400)</p>
+                        <p class="text-body-large">Transform your business operations with autonomous AI agents that deliver measurable results and sustainable growth.</p>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <p class="text-small" style="color: var(--text-muted); margin-bottom: 0.5rem;">Body Text (16px/400)</p>
+                        <p class="text-body">Experience the next generation of business intelligence with our comprehensive AI platform designed for enterprise-scale operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

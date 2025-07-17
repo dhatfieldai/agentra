@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Toaster, toast } from "react-hot-toast";
 
@@ -53,32 +54,57 @@ export default function ContactUsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 pt-20">
+    <main className="min-h-screen pt-20" style={{ background: 'var(--background)' }}>
       <div className="container mx-auto px-6 py-16">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-6xl md:text-7xl font-light mb-8 text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
             Contact AURORA9
           </h1>
           <div className="max-w-4xl mx-auto">
-            <p className="text-xl md:text-2xl text-gray-300 mb-6 leading-relaxed">
+            <p className="leading-relaxed mb-6" style={{ 
+              color: '#cbd5e1',
+              fontSize: '1.125rem',
+              fontWeight: '300',
+              lineHeight: '1.6'
+            }}>
               Thank you for contacting AURORA9! If you have any questions, please complete the form in its entirety. 
               Our client success team will reply within 24 hours to ensure you get the support you need.
             </p>
-            <p className="text-lg text-gray-400">
+            <p className="leading-relaxed" style={{ 
+              color: '#64748b',
+              fontSize: '1rem',
+              fontWeight: '300',
+              lineHeight: '1.6'
+            }}>
               We&apos;re here to help you transform your e-commerce business with our autonomous AI workforce.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact Form Section */}
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 border border-white/20">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="rounded-xl p-10 bg-gradient-to-br from-gray-900/40 via-blue-900/40 to-purple-900/40 border border-blue-500/20 backdrop-blur-lg"
+          >
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-light mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 Get in Touch
               </h2>
-              <p className="text-gray-300 text-lg">
+              <p className="leading-relaxed" style={{ 
+                color: '#cbd5e1',
+                fontSize: '1.125rem',
+                fontWeight: '300',
+                lineHeight: '1.6'
+              }}>
                 Ready to revolutionize your business? Let&apos;s start the conversation.
               </p>
             </div>
@@ -145,12 +171,15 @@ export default function ContactUsPage() {
               <button
                 type="submit"
                 disabled={!captchaToken}
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 disabled:from-gray-500 disabled:to-gray-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:hover:scale-100 disabled:cursor-not-allowed"
+                className="w-full font-medium px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:hover:scale-100 disabled:cursor-not-allowed text-white"
+                style={{ 
+                  background: !captchaToken ? '#64748b' : 'var(--gradient-aurora)'
+                }}
               >
                 Send Message
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
 
         {/* Additional Contact Information */}
