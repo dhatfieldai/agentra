@@ -8,6 +8,7 @@
     color: inherit;
     background: inherit;
     -webkit-background-clip: inherit;
+    background-clip: inherit;
     -webkit-text-fill-color: inherit;
   }
 }

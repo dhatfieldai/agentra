@@ -68,6 +68,16 @@ const FeatureSection = () => {
       title: 'Scalable Cloud Infrastructure',
       description: 'Enterprise-grade infrastructure that scales with your needs.',
       icon: '☁️',
+    },
+    {
+      title: 'Autonomous Buy Box Optimization with Predictive Counter-Strategy™',
+      description: 'Advanced AI agent that wins Amazon Buy Box using predictive analytics and game theory to counter competitor strategies while preserving optimal profit margins.',
+      icon: '🎯',
+    },
+    {
+      title: 'FBA Reimbursement & Discrepancy Reconciliation Agent',
+      description: 'Autonomous agent that tracks FBA inventory, identifies discrepancies, and automatically manages Amazon Seller Support cases to recover lost revenue.',
+      icon: '💰',
     }
   ];
 
@@ -101,7 +111,7 @@ const FeatureSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-heading-1 text-white mb-4">
+          <h2 className="text-heading-1 text-white mb-4" style={{ fontWeight: '300' }}>
             Core Features
           </h2>
           <p className="text-body-large max-w-3xl mx-auto" style={{ color: '#cbd5e1' }}>
@@ -132,7 +142,7 @@ const FeatureSection = () => {
                      style={{ background: 'var(--gradient-aurora)', padding: '2px' }}>
                   <div className="h-full w-full rounded-2xl p-6" style={{ background: 'var(--background)' }}>
                     <div className="text-4xl mb-4">{feature.icon}</div>
-                    <h3 className="text-heading-2 text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text transition-all duration-300">
+                    <h3 className="text-heading-2 text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text transition-all duration-300" style={{ fontWeight: '300' }}>
                       {feature.title}
                     </h3>
                     <p className="text-body leading-relaxed" style={{ color: '#cbd5e1' }}>
@@ -144,7 +154,7 @@ const FeatureSection = () => {
                 {/* Default state content */}
                 <div className="group-hover:opacity-0 transition-opacity duration-300">
                   <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-heading-2 text-white mb-3">
+                  <h3 className="text-heading-2 text-white mb-3" style={{ fontWeight: '300' }}>
                     {feature.title}
                   </h3>
                   <p className="text-body leading-relaxed" style={{ color: '#cbd5e1' }}>

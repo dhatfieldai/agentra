@@ -2,59 +2,59 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { posts } from "./posts";
 
 export default function BlogPage() {
   return (
-    <>
-      <main className="bg-white dark:bg-gray-900 text-gray-800 dark:text-white pt-24 pb-20 px-6">
+    <main className="min-h-screen pt-20" style={{ background: 'var(--background)' }}>
+      <div className="container mx-auto px-6 py-16">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -30 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-xl">
-            AURORA9 Blog
+          <h1 className="text-6xl md:text-7xl font-light mb-8 text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            Blog
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="max-w-4xl mx-auto leading-relaxed" style={{ 
+            color: '#cbd5e1',
+            fontSize: '1.125rem',
+            fontWeight: '300',
+            lineHeight: '1.6'
+          }}>
             Insights, Trends & Updates from the Future of Autonomous E-commerce
           </p>
         </motion.div>
 
         {/* Blog Grid */}
-        <section className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <section className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           {posts.map((post, index) => (
             <motion.div
               key={post.slug}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 shadow-md hover:shadow-xl rounded-2xl overflow-hidden transition-all border border-gray-200 dark:border-gray-700"
+              className="rounded-lg p-6 bg-gradient-to-br from-gray-900/40 via-blue-900/40 to-purple-900/40 border border-blue-500/20 backdrop-blur-lg hover:border-blue-500/40 transition-all duration-300"
             >
               <Link href={`/blog/${post.slug}`}>
                 <div className="cursor-pointer">
-                  <div className="w-full h-48 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900 dark:to-purple-900 flex items-center justify-center">
-                    <Image
-                      src={post.imageUrl}
-                      alt={post.title}
-                      width={80}
-                      height={80}
-                      className="w-20 h-20 object-contain opacity-80"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h2 className="text-2xl font-semibold mb-2 text-indigo-800 dark:text-indigo-400">
+                  <div>
+                    <h2 className="text-2xl font-light mb-4 text-white">
                       {post.title}
                     </h2>
-                    <p className="text-gray-700 dark:text-gray-300 text-sm">
+                    <p className="leading-relaxed mb-4" style={{ 
+                      color: '#cbd5e1',
+                      fontSize: '1rem',
+                      fontWeight: '300',
+                      lineHeight: '1.6'
+                    }}>
                       {post.description}
                     </p>
-                    <span className="mt-4 inline-block text-sm text-indigo-500 hover:text-indigo-600">
-                      Read More &rarr;
+                    <span className="inline-block text-sm bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-medium">
+                      Read More →
                     </span>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export default function BlogPage() {
             </motion.div>
           ))}
         </section>
-      </main>
-    </>
+      </div>
+    </main>
   );
 }

@@ -52,39 +52,101 @@ export default function TermsPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 pt-20">
-      <div className="container mx-auto px-6 py-16">
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Terms of Service
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            These terms govern your use of AURORA9&apos;s AI automation services. 
-            By using our platform, you agree to comply with these terms and conditions.
-          </p>
-          <div className="mt-8 text-gray-400">
-            <p>Last updated: July 16, 2025</p>
-          </div>
-        </motion.div>
+    <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
+      {/* Hero Section */}
+      <div style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.1)' }}></div>
+        <div style={{ position: 'relative', maxWidth: '64rem', margin: '0 auto', padding: '5rem 1.5rem' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{ textAlign: 'center' }}
+          >
+            <h1 style={{ 
+              fontSize: '4rem', 
+              fontWeight: '300', 
+              marginBottom: '2rem',
+              color: 'white',
+              textShadow: '0 4px 8px rgba(0,0,0,0.3)',
+              position: 'relative',
+              zIndex: 1
+            }}>
+              Terms of Service
+            </h1>
+            <p style={{ 
+              fontSize: '1.5rem', 
+              fontWeight: '300',
+              color: 'white',
+              maxWidth: '64rem', 
+              margin: '0 auto',
+              lineHeight: '1.6',
+              textShadow: '0 2px 4px rgba(0,0,0,0.2)',
+              position: 'relative',
+              zIndex: 1
+            }}>
+              These terms govern your use of AURORA9&apos;s AI automation services. 
+              By using our platform, you agree to comply with these terms and conditions.
+            </p>
+            <div style={{ 
+              marginTop: '2rem', 
+              color: 'rgba(255,255,255,0.8)',
+              position: 'relative',
+              zIndex: 1
+            }}>
+              <p style={{ fontWeight: '300' }}>Last updated: July 16, 2025</p>
+            </div>
+          </motion.div>
+        </div>
+        {/* Floating particles */}
+        <div style={{ position: 'absolute', top: '2.5rem', left: '2.5rem', width: '5rem', height: '5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(1rem)' }}></div>
+        <div style={{ position: 'absolute', bottom: '2.5rem', right: '2.5rem', width: '8rem', height: '8rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(1rem)' }}></div>
+        <div style={{ position: 'absolute', top: '50%', left: '10%', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.05)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+        <div style={{ position: 'absolute', bottom: '20%', right: '15%', width: '4rem', height: '4rem', background: 'rgba(255,255,255,0.05)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+      </div>
+
+      <div style={{ maxWidth: '96rem', margin: '0 auto', padding: '3rem 1.5rem' }}>
 
         {/* Agreement Notice */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-16"
+          style={{ marginBottom: '4rem' }}
         >
-          <div className="backdrop-blur-md bg-gradient-to-br from-blue-900/60 to-purple-900/60 rounded-2xl p-8 border border-blue-400/50">
-            <div className="text-center">
-              <Scale className="w-16 h-16 text-blue-400 mx-auto mb-6" />
-              <h2 className="text-3xl font-bold text-white mb-6">Agreement to Terms</h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            border: '1px solid rgba(203, 213, 225, 0.3)',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            {/* Floating particles */}
+            <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+            
+            <div style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
+              <Scale style={{ width: '4rem', height: '4rem', color: '#4facfe', margin: '0 auto 1.5rem' }} />
+              <h2 style={{ 
+                fontSize: '3rem', 
+                fontWeight: '300', 
+                color: '#cbd5e1', 
+                marginBottom: '1.5rem'
+              }}>
+                Agreement to Terms
+              </h2>
+              <p style={{ 
+                fontSize: '1.25rem', 
+                fontWeight: '300',
+                color: '#cbd5e1',
+                maxWidth: '48rem', 
+                margin: '0 auto',
+                lineHeight: '1.6'
+              }}>
                 By accessing or using AURORA9&apos;s services, you acknowledge that you have read, 
                 understood, and agree to be bound by these Terms of Service and our Privacy Policy.
               </p>
@@ -93,25 +155,51 @@ export default function TermsPage() {
         </motion.div>
 
         {/* Main Terms Sections */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
           {sections.map((section, index) => (
             <motion.div
               key={section.title}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className="backdrop-blur-md bg-gray-900/40 rounded-xl p-8 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300"
+              style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                borderRadius: '1rem',
+                padding: '2rem',
+                border: '1px solid rgba(203, 213, 225, 0.3)',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              }}
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
+              }}
             >
-              <div className="flex items-center mb-6">
-                <div className="text-blue-400 mr-4">
+              {/* Floating particles */}
+              <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+              <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+              
+              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.5rem', position: 'relative', zIndex: 1 }}>
+                <div style={{ color: '#4facfe', marginRight: '1rem' }}>
                   {section.icon}
                 </div>
-                <h2 className="text-2xl font-bold text-white">{section.title}</h2>
+                <h2 style={{ 
+                  fontSize: '2rem', 
+                  fontWeight: '300', 
+                  color: '#cbd5e1'
+                }}>
+                  {section.title}
+                </h2>
               </div>
-              <ul className="space-y-3">
+              <ul style={{ listStyle: 'none', padding: 0, position: 'relative', zIndex: 1 }}>
                 {section.content.map((item, itemIndex) => (
-                  <li key={itemIndex} className="text-gray-300 flex items-start">
-                    <span className="text-blue-400 mr-3 mt-1">•</span>
+                  <li key={itemIndex} style={{ color: '#cbd5e1', fontWeight: '300', lineHeight: '1.6', marginBottom: '0.75rem', display: 'flex', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>•</span>
                     {item}
                   </li>
                 ))}
@@ -125,32 +213,80 @@ export default function TermsPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="space-y-12"
+          style={{ marginBottom: '3rem' }}
         >
           {/* Payment Terms */}
-          <div className="backdrop-blur-md bg-gray-900/40 rounded-xl p-8 border border-gray-700/50">
-            <h2 className="text-3xl font-bold text-white mb-6">Payment Terms and Billing</h2>
-            <div className="text-gray-300 space-y-4">
-              <p>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            border: '1px solid rgba(203, 213, 225, 0.3)',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+            position: 'relative',
+            overflow: 'hidden',
+            marginBottom: '3rem'
+          }}>
+            {/* Floating particles */}
+            <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+            
+            <h2 style={{ 
+              fontSize: '3rem', 
+              fontWeight: '300', 
+              color: '#cbd5e1', 
+              marginBottom: '1.5rem',
+              position: 'relative',
+              zIndex: 1
+            }}>
+              Payment Terms and Billing
+            </h2>
+            <div style={{ color: '#cbd5e1', fontWeight: '300', lineHeight: '1.6', position: 'relative', zIndex: 1 }}>
+              <p style={{ marginBottom: '1.5rem' }}>
                 Subscription fees are billed in advance on a monthly or annual basis. All payments are processed securely through our trusted payment providers.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Billing Cycle</h3>
-                  <ul className="space-y-2">
-                    <li>• Monthly subscriptions renew automatically</li>
-                    <li>• Annual subscriptions offer discounted rates</li>
-                    <li>• Pro-rated charges for plan upgrades</li>
-                    <li>• Refunds processed for unused portions</li>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '300', color: 'white', marginBottom: '0.75rem' }}>Billing Cycle</h3>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Monthly subscriptions renew automatically
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Annual subscriptions offer discounted rates
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Pro-rated charges for plan upgrades
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Refunds processed for unused portions
+                    </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Payment Methods</h3>
-                  <ul className="space-y-2">
-                    <li>• Major credit and debit cards accepted</li>
-                    <li>• Bank transfers for enterprise accounts</li>
-                    <li>• Secure payment processing with encryption</li>
-                    <li>• Invoice billing available for qualified accounts</li>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '300', color: 'white', marginBottom: '0.75rem' }}>Payment Methods</h3>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Major credit and debit cards accepted
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Bank transfers for enterprise accounts
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Secure payment processing with encryption
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Invoice billing available for qualified accounts
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -158,29 +294,77 @@ export default function TermsPage() {
           </div>
 
           {/* Intellectual Property */}
-          <div className="backdrop-blur-md bg-gray-900/40 rounded-xl p-8 border border-gray-700/50">
-            <h2 className="text-3xl font-bold text-white mb-6">Intellectual Property Rights</h2>
-            <div className="text-gray-300 space-y-4">
-              <p>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            border: '1px solid rgba(203, 213, 225, 0.3)',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+            position: 'relative',
+            overflow: 'hidden',
+            marginBottom: '3rem'
+          }}>
+            {/* Floating particles */}
+            <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+            
+            <h2 style={{ 
+              fontSize: '3rem', 
+              fontWeight: '300', 
+              color: '#cbd5e1', 
+              marginBottom: '1.5rem',
+              position: 'relative',
+              zIndex: 1
+            }}>
+              Intellectual Property Rights
+            </h2>
+            <div style={{ color: '#cbd5e1', fontWeight: '300', lineHeight: '1.6', position: 'relative', zIndex: 1 }}>
+              <p style={{ marginBottom: '1.5rem' }}>
                 AURORA9 retains all rights to our proprietary technology, algorithms, and platform features. Users retain ownership of their data and content.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Our Rights</h3>
-                  <ul className="space-y-2">
-                    <li>• Proprietary AI algorithms and models</li>
-                    <li>• Platform software and architecture</li>
-                    <li>• Trademarks and brand elements</li>
-                    <li>• Documentation and training materials</li>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '300', color: 'white', marginBottom: '0.75rem' }}>Our Rights</h3>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Proprietary AI algorithms and models
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Platform software and architecture
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Trademarks and brand elements
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Documentation and training materials
+                    </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Your Rights</h3>
-                  <ul className="space-y-2">
-                    <li>• Ownership of your business data</li>
-                    <li>• Control over data sharing preferences</li>
-                    <li>• Right to export your information</li>
-                    <li>• License to use our services as agreed</li>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '300', color: 'white', marginBottom: '0.75rem' }}>Your Rights</h3>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Ownership of your business data
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Control over data sharing preferences
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Right to export your information
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      License to use our services as agreed
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -188,34 +372,82 @@ export default function TermsPage() {
           </div>
 
           {/* Termination */}
-          <div className="backdrop-blur-md bg-gray-900/40 rounded-xl p-8 border border-gray-700/50">
-            <h2 className="text-3xl font-bold text-white mb-6">Account Termination</h2>
-            <div className="text-gray-300 space-y-4">
-              <p>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            border: '1px solid rgba(203, 213, 225, 0.3)',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+            position: 'relative',
+            overflow: 'hidden',
+            marginBottom: '3rem'
+          }}>
+            {/* Floating particles */}
+            <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+            
+            <h2 style={{ 
+              fontSize: '3rem', 
+              fontWeight: '300', 
+              color: '#cbd5e1', 
+              marginBottom: '1.5rem',
+              position: 'relative',
+              zIndex: 1
+            }}>
+              Account Termination
+            </h2>
+            <div style={{ color: '#cbd5e1', fontWeight: '300', lineHeight: '1.6', position: 'relative', zIndex: 1 }}>
+              <p style={{ marginBottom: '1.5rem' }}>
                 Either party may terminate the service agreement with appropriate notice. Upon termination, you will retain access until the end of your billing period.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-3">User Termination</h3>
-                  <ul className="space-y-2">
-                    <li>• Cancel anytime from account settings</li>
-                    <li>• 30-day data retention period</li>
-                    <li>• Export data before cancellation</li>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '300', color: 'white', marginBottom: '0.75rem' }}>User Termination</h3>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Cancel anytime from account settings
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      30-day data retention period
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Export data before cancellation
+                    </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Service Termination</h3>
-                  <ul className="space-y-2">
-                    <li>• For violations of terms</li>
-                    <li>• Non-payment of fees</li>
-                    <li>• Suspicious or fraudulent activity</li>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '300', color: 'white', marginBottom: '0.75rem' }}>Service Termination</h3>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      For violations of terms
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Non-payment of fees
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Suspicious or fraudulent activity
+                    </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-3">Data Handling</h3>
-                  <ul className="space-y-2">
-                    <li>• Secure deletion after retention period</li>
-                    <li>• Backup data removed permanently</li>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '300', color: 'white', marginBottom: '0.75rem' }}>Data Handling</h3>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Secure deletion after retention period
+                    </li>
+                    <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#4facfe', marginRight: '0.5rem' }}>•</span>
+                      Backup data removed permanently
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -223,16 +455,59 @@ export default function TermsPage() {
           </div>
 
           {/* Contact Information */}
-          <div className="backdrop-blur-md bg-gradient-to-br from-blue-900/60 to-purple-900/60 rounded-2xl p-8 border border-blue-400/50">
-            <h2 className="text-3xl font-bold text-white mb-6 text-center">Questions About These Terms?</h2>
-            <div className="text-center text-gray-300 space-y-4">
-              <p>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            border: '1px solid rgba(203, 213, 225, 0.3)',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            {/* Floating particles */}
+            <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+            
+            <h2 style={{ 
+              fontSize: '3rem', 
+              fontWeight: '300', 
+              color: '#cbd5e1', 
+              marginBottom: '1.5rem',
+              textAlign: 'center',
+              position: 'relative',
+              zIndex: 1
+            }}>
+              Questions About These Terms?
+            </h2>
+            <div style={{ textAlign: 'center', color: '#cbd5e1', fontWeight: '300', lineHeight: '1.6', position: 'relative', zIndex: 1 }}>
+              <p style={{ marginBottom: '1.5rem' }}>
                 If you have any questions about these Terms of Service or need clarification on any provisions, our legal team is here to help.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
                 <a 
                   href="/contact-us"
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 text-center"
+                  style={{
+                    background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                    color: 'white',
+                    fontWeight: '600',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '0.5rem',
+                    transition: 'all 0.3s ease',
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)';
+                  }}
                 >
                   Contact Legal Team
                 </a>

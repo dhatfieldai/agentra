@@ -27,8 +27,8 @@ export default function Home() {
             className="max-w-6xl mx-auto relative z-10"
           >
             <h1 className="text-display mb-6 leading-tight">
-              <span className="gradient-text">
-                The Future of E-commerce AI is Autonomous
+              <span className="gradient-text" style={{ fontWeight: '300' }}>
+                The Future of E-commerce: Agentic AI Workforce
               </span>
             </h1>
             
@@ -41,7 +41,7 @@ export default function Home() {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div className="space-y-2">
-                <div className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--accent)' }}>10,000+</div>
+                <div className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--accent)' }}>5,500</div>
                 <div className="text-small" style={{ color: '#cbd5e1' }}>Early Adopters</div>
               </div>
               <div className="space-y-2">
@@ -77,12 +77,12 @@ export default function Home() {
           </div>
 
           <div className="max-w-4xl mx-auto text-center relative z-10">
-            <h2 className="text-heading-1 mb-6">
+            <h2 className="text-heading-1 mb-6" style={{ fontWeight: '300' }}>
               Be First to Access the Future
-              <span className="block" style={{ color: 'var(--accent)' }}>of E-commerce Automation</span>
+              <span className="block" style={{ color: 'var(--accent)', fontWeight: '300' }}>of E-commerce Automation</span>
             </h2>
             <p className="text-body-large mb-8 leading-relaxed" style={{ color: '#cbd5e1' }}>
-              Join 10,000+ forward-thinking entrepreneurs on the AURORA9 waitlist. 
+              Join 5,500+ forward-thinking entrepreneurs on the AURORA9 waitlist. 
               Get exclusive early access, special pricing, and be the first to transform your business.
             </p>
 

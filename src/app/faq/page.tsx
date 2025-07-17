@@ -97,22 +97,6 @@ const faqs = [
 
 const categories = ["All", ...Array.from(new Set(faqs.map(faq => faq.category)))];
 
-const categoryColors: { [key: string]: string } = {
-  "General": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-  "Amazon Integration": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
-  "Shopify Integration": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-  "Operation": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
-  "Security": "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
-  "Marketing & Ads": "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200",
-  "Reporting": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
-  "Scalability": "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200",
-  "Platforms": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
-  "Customization": "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200",
-  "Compliance": "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200",
-  "Support": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
-  "Getting Started": "bg-violet-100 text-violet-800 dark:bg-violet-900 dark:text-violet-200",
-};
-
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -130,31 +114,49 @@ export default function FAQPage() {
   });
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
+    <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 text-white">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-4xl mx-auto px-6 py-20">
-          <div className="text-center">
-            <h1 className="text-5xl font-bold mb-6">
+      <div style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.1)' }}></div>
+        <div style={{ position: 'relative', maxWidth: '64rem', margin: '0 auto', padding: '5rem 1.5rem' }}>
+          <div style={{ textAlign: 'center' }}>
+            <h1 style={{ 
+              fontSize: '3.5rem', 
+              fontWeight: '300', 
+              marginBottom: '1.5rem',
+              color: 'white',
+              textShadow: '0 4px 8px rgba(0,0,0,0.3)',
+              position: 'relative',
+              zIndex: 1
+            }}>
               Frequently Asked Questions
             </h1>
-            <p className="text-xl opacity-90 max-w-2xl mx-auto">
+            <p style={{ 
+              fontSize: '1.25rem', 
+              opacity: 0.9, 
+              maxWidth: '42rem', 
+              margin: '0 auto',
+              fontWeight: '300',
+              color: 'white',
+              textShadow: '0 2px 4px rgba(0,0,0,0.2)'
+            }}>
               Everything you need to know about AURORA9&apos;s autonomous AI workforce
             </p>
           </div>
         </div>
-        {/* Decorative elements */}
-        <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-10 right-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+        {/* Floating particles */}
+        <div style={{ position: 'absolute', top: '2.5rem', left: '2.5rem', width: '5rem', height: '5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(1rem)' }}></div>
+        <div style={{ position: 'absolute', bottom: '2.5rem', right: '2.5rem', width: '8rem', height: '8rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(1rem)' }}></div>
+        <div style={{ position: 'absolute', top: '50%', left: '10%', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.05)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+        <div style={{ position: 'absolute', bottom: '20%', right: '15%', width: '4rem', height: '4rem', background: 'rgba(255,255,255,0.05)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div style={{ maxWidth: '64rem', margin: '0 auto', padding: '3rem 1.5rem' }}>
         {/* Search and Filter Section */}
-        <div className="mb-8 space-y-6">
+        <div style={{ marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {/* Search Bar */}
-          <div className="relative">
-            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400">
+          <div style={{ position: 'relative' }}>
+            <div style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', fontSize: '1.25rem', color: '#9ca3af' }}>
               🔍
             </div>
             <input
@@ -162,21 +164,74 @@ export default function FAQPage() {
               placeholder="Search questions..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all shadow-sm"
+              style={{
+                width: '100%',
+                paddingLeft: '3rem',
+                paddingRight: '1rem',
+                paddingTop: '0.75rem',
+                paddingBottom: '0.75rem',
+                border: '1px solid rgba(203, 213, 225, 0.3)',
+                borderRadius: '0.75rem',
+                background: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                color: '#cbd5e1',
+                fontSize: '1rem',
+                fontWeight: '300',
+                outline: 'none',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)'
+              }}
+              onFocus={(e) => {
+                e.target.style.border = '1px solid #667eea';
+                e.target.style.boxShadow = '0 0 0 3px rgba(102, 126, 234, 0.1)';
+              }}
+              onBlur={(e) => {
+                e.target.style.border = '1px solid rgba(203, 213, 225, 0.3)';
+                e.target.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)';
+              }}
             />
           </div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap gap-2">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  selectedCategory === category
-                    ? 'bg-indigo-600 text-white shadow-lg scale-105'
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
-                }`}
+                style={{
+                  padding: '0.5rem 1rem',
+                  borderRadius: '9999px',
+                  fontSize: '0.875rem',
+                  fontWeight: '300',
+                  transition: 'all 0.3s ease',
+                  border: selectedCategory === category ? 'none' : '1px solid rgba(203, 213, 225, 0.3)',
+                  background: selectedCategory === category 
+                    ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+                    : 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  color: selectedCategory === category ? 'white' : '#cbd5e1',
+                  boxShadow: selectedCategory === category 
+                    ? '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)'
+                    : '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+                  cursor: 'pointer',
+                  transform: selectedCategory === category ? 'scale(1.05)' : 'scale(1)'
+                }}
+                onMouseEnter={(e) => {
+                  if (selectedCategory !== category) {
+                    const target = e.target as HTMLButtonElement;
+                    target.style.background = 'rgba(255, 255, 255, 0.2)';
+                    target.style.transform = 'scale(1.02)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (selectedCategory !== category) {
+                    const target = e.target as HTMLButtonElement;
+                    target.style.background = 'rgba(255, 255, 255, 0.1)';
+                    target.style.transform = 'scale(1)';
+                  }
+                }}
               >
                 {category}
               </button>
@@ -185,44 +240,115 @@ export default function FAQPage() {
         </div>
 
         {/* FAQ Items */}
-        <div className="space-y-4">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {filteredFaqs.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="text-gray-400 text-lg">No questions found matching your search.</div>
+            <div style={{ textAlign: 'center', padding: '3rem 0' }}>
+              <div style={{ color: '#9ca3af', fontSize: '1.125rem', fontWeight: '300' }}>No questions found matching your search.</div>
             </div>
           ) : (
             filteredFaqs.map((faq, index) => (
               <div
                 key={index}
-                className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 dark:border-gray-700 overflow-hidden"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  borderRadius: '0.75rem',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+                  border: '1px solid rgba(203, 213, 225, 0.3)',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
+                  position: 'relative'
+                }}
+                onMouseEnter={(e) => {
+                  const target = e.currentTarget as HTMLDivElement;
+                  target.style.transform = 'translateY(-2px)';
+                  target.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)';
+                  target.style.borderImage = 'linear-gradient(135deg, #667eea, #764ba2, #f093fb) 1';
+                }}
+                onMouseLeave={(e) => {
+                  const target = e.currentTarget as HTMLDivElement;
+                  target.style.transform = 'translateY(0)';
+                  target.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)';
+                  target.style.borderImage = 'none';
+                }}
               >
                 <button
                   onClick={() => toggle(index)}
-                  className="w-full text-left p-6 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                  style={{
+                    width: '100%',
+                    textAlign: 'left',
+                    padding: '1.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    color: '#cbd5e1'
+                  }}
+                  onMouseEnter={(e) => {
+                    const target = e.currentTarget as HTMLButtonElement;
+                    target.style.background = 'rgba(255, 255, 255, 0.05)';
+                  }}
+                  onMouseLeave={(e) => {
+                    const target = e.currentTarget as HTMLButtonElement;
+                    target.style.background = 'transparent';
+                  }}
                 >
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className={`px-2 py-1 text-xs font-medium rounded-full ${categoryColors[faq.category] || 'bg-gray-100 text-gray-800'}`}>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+                      <span style={{
+                        padding: '0.25rem 0.5rem',
+                        fontSize: '0.75rem',
+                        fontWeight: '300',
+                        borderRadius: '9999px',
+                        background: 'rgba(102, 126, 234, 0.2)',
+                        color: '#cbd5e1',
+                        border: '1px solid rgba(102, 126, 234, 0.3)'
+                      }}>
                         {faq.category}
                       </span>
                     </div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white text-lg group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    <h3 style={{ 
+                      fontWeight: '300', 
+                      fontSize: '1.125rem',
+                      color: '#cbd5e1',
+                      transition: 'color 0.3s ease'
+                    }}>
                       {faq.question}
                     </h3>
                   </div>
-                  <div className={`h-5 w-5 text-gray-500 transition-transform duration-200 ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}>
+                  <div style={{
+                    fontSize: '1.25rem',
+                    color: '#9ca3af',
+                    transition: 'transform 0.2s ease',
+                    transform: openIndex === index ? 'rotate(180deg)' : 'rotate(0deg)'
+                  }}>
                     ⌄
                   </div>
                 </button>
                 
-                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`}>
-                  <div className="px-6 pb-6">
-                    <div className="border-l-4 border-indigo-500 pl-4 bg-gradient-to-r from-indigo-50 to-transparent dark:from-indigo-900/30 dark:to-transparent p-4 rounded-r-lg">
-                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <div style={{
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
+                  maxHeight: openIndex === index ? '24rem' : '0',
+                  opacity: openIndex === index ? 1 : 0
+                }}>
+                  <div style={{ padding: '0 1.5rem 1.5rem' }}>
+                    <div style={{
+                      borderLeft: '4px solid #667eea',
+                      paddingLeft: '1rem',
+                      background: 'linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, transparent 100%)',
+                      padding: '1rem',
+                      borderRadius: '0 0.5rem 0.5rem 0'
+                    }}>
+                      <p style={{ 
+                        color: '#cbd5e1', 
+                        lineHeight: '1.6',
+                        fontWeight: '300'
+                      }}>
                         {faq.answer}
                       </p>
                     </div>
@@ -234,22 +360,102 @@ export default function FAQPage() {
         </div>
 
         {/* Contact Section */}
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl p-8 text-white">
-            <h2 className="text-2xl font-bold mb-4">Still have questions?</h2>
-            <p className="text-lg opacity-90 mb-6">
+        <div style={{ marginTop: '4rem', textAlign: 'center' }}>
+          <div style={{
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            color: 'white',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            {/* Floating particles */}
+            <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
+            
+            <h2 style={{ 
+              fontSize: '1.5rem', 
+              fontWeight: '300', 
+              marginBottom: '1rem',
+              position: 'relative',
+              zIndex: 1
+            }}>
+              Still have questions?
+            </h2>
+            <p style={{ 
+              fontSize: '1.125rem', 
+              opacity: 0.9, 
+              marginBottom: '1.5rem',
+              fontWeight: '300',
+              position: 'relative',
+              zIndex: 1
+            }}>
               Can&apos;t find what you&apos;re looking for? We&apos;re here to help.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div style={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: '1rem', 
+              justifyContent: 'center',
+              alignItems: 'center',
+              position: 'relative',
+              zIndex: 1
+            }}>
               <a
                 href="/contact-us"
-                className="inline-flex items-center justify-center px-6 py-3 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '0.75rem 1.5rem',
+                  background: 'white',
+                  color: '#667eea',
+                  fontWeight: '300',
+                  borderRadius: '0.5rem',
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)'
+                }}
+                onMouseEnter={(e) => {
+                  const target = e.currentTarget as HTMLAnchorElement;
+                  target.style.background = '#f9fafb';
+                  target.style.transform = 'translateY(-2px)';
+                  target.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  const target = e.currentTarget as HTMLAnchorElement;
+                  target.style.background = 'white';
+                  target.style.transform = 'translateY(0)';
+                  target.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)';
+                }}
               >
                 Contact Support
               </a>
               <a
                 href="/how-it-works"
-                className="inline-flex items-center justify-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '0.75rem 1.5rem',
+                  border: '2px solid white',
+                  color: 'white',
+                  fontWeight: '300',
+                  borderRadius: '0.5rem',
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  background: 'transparent'
+                }}
+                onMouseEnter={(e) => {
+                  const target = e.currentTarget as HTMLAnchorElement;
+                  target.style.background = 'rgba(255, 255, 255, 0.1)';
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  const target = e.currentTarget as HTMLAnchorElement;
+                  target.style.background = 'transparent';
+                  target.style.transform = 'translateY(0)';
+                }}
               >
                 Learn More
               </a>
