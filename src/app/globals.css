@@ -54,6 +54,7 @@ body {
   scroll-behavior: smooth;
   font-weight: 400;
   letter-spacing: -0.01em;
+  padding-top: 80px; /* Account for fixed navbar */
 }
 
 /* Custom scrollbar */

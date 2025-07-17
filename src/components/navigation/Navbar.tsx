@@ -51,7 +51,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="shadow-lg border-b" style={{ background: 'var(--background)', borderColor: 'rgba(59, 130, 246, 0.2)' }}>
+    <nav 
+      className="shadow-lg border-b fixed top-0 left-0 right-0 z-50" 
+      style={{ 
+        background: 'rgba(10, 11, 20, 0.95)', 
+        borderColor: 'rgba(59, 130, 246, 0.2)',
+        backdropFilter: 'blur(10px)'
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -139,7 +146,14 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white hover:opacity-80 p-2 rounded-lg transition-opacity duration-200"
+            className="md:hidden p-3 rounded-lg transition-all duration-200 flex items-center justify-center"
+            style={{
+              background: 'rgba(59, 130, 246, 0.1)',
+              border: '2px solid rgba(59, 130, 246, 0.3)',
+              minWidth: '48px',
+              minHeight: '48px',
+              color: '#60a5fa'
+            }}
             aria-label="Toggle Menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -148,27 +162,52 @@ export default function Navbar() {
 
         {/* Mobile Dropdown Menu */}
         {isOpen && (
-          <div className="md:hidden border-t" style={{ borderColor: 'rgba(59, 130, 246, 0.2)', background: 'var(--background)' }}>
-            <div className="px-4 py-4 space-y-3">
+          <div 
+            className="md:hidden border-t"
+            style={{ 
+              borderColor: 'rgba(59, 130, 246, 0.3)', 
+              background: 'rgba(10, 11, 20, 0.95)',
+              backdropFilter: 'blur(10px)',
+              position: 'relative',
+              zIndex: 50
+            }}
+          >
+            <div className="px-4 py-6 space-y-4">
               {mainNavItems.map((item) => (
                 <div key={item.label}>
                   <Link
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="block py-3 px-4 rounded-lg text-base font-medium text-white hover:opacity-80 transition-opacity duration-300"
+                    className="block py-4 px-4 rounded-lg text-lg font-medium transition-all duration-300"
+                    style={{
+                      color: '#60a5fa',
+                      background: 'rgba(59, 130, 246, 0.1)',
+                      border: '1px solid rgba(59, 130, 246, 0.2)',
+                      minHeight: '48px',
+                      display: 'flex',
+                      alignItems: 'center'
+                    }}
                   >
                     {item.label}
                   </Link>
                   
                   {/* Mobile Submenu */}
                   {item.hasSubmenu && item.submenu && (
-                    <div className="ml-4 mt-2 space-y-2">
+                    <div className="ml-4 mt-3 space-y-2">
                       {item.submenu.map((subItem) => (
                         <Link
                           key={subItem.href}
                           href={subItem.href}
                           onClick={() => setIsOpen(false)}
-                          className="block py-2 px-4 text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gradient-to-r hover:from-blue-400 hover:to-cyan-300 hover:text-white rounded-lg transition-all duration-200"
+                          className="block py-3 px-4 rounded-lg transition-all duration-200"
+                          style={{
+                            color: '#cbd5e1',
+                            background: 'rgba(59, 130, 246, 0.05)',
+                            border: '1px solid rgba(59, 130, 246, 0.1)',
+                            minHeight: '44px',
+                            display: 'flex',
+                            alignItems: 'center'
+                          }}
                         >
                           {subItem.label}
                         </Link>
@@ -179,8 +218,19 @@ export default function Navbar() {
               ))}
               
               {/* Mobile Action Buttons */}
-              <div className="pt-4 border-t border-gray-200 dark:border-gray-600 space-y-3">
-                <div className="block w-full py-3 px-4 text-center bg-gray-400 dark:bg-gray-600 text-white rounded-lg text-base font-bold opacity-60 cursor-not-allowed">
+              <div className="pt-4 border-t space-y-3" style={{ borderColor: 'rgba(59, 130, 246, 0.2)' }}>
+                <div 
+                  className="block w-full py-4 px-4 text-center rounded-lg text-lg font-bold opacity-60 cursor-not-allowed"
+                  style={{
+                    background: 'rgba(100, 116, 139, 0.5)',
+                    color: '#cbd5e1',
+                    border: '1px solid rgba(100, 116, 139, 0.3)',
+                    minHeight: '48px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
                   Book a Demo (Coming Soon)
                 </div>
               </div>
