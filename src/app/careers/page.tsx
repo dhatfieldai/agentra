@@ -19,7 +19,7 @@ export default function CareersPage() {
             style={{ textAlign: 'center' }}
           >
             <h1 style={{ 
-              fontSize: '4rem', 
+              fontSize: 'clamp(2.5rem, 6vw, 4rem)', 
               fontWeight: '300', 
               marginBottom: '2rem',
               color: 'white',
@@ -30,7 +30,7 @@ export default function CareersPage() {
               Careers at AURORA9
             </h1>
             <p style={{ 
-              fontSize: '1.5rem', 
+              fontSize: 'clamp(1.125rem, 3vw, 1.5rem)', 
               fontWeight: '300',
               color: 'white',
               maxWidth: '64rem', 
@@ -75,15 +75,24 @@ export default function CareersPage() {
               <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
               <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
               
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', zIndex: 1 }}>
-                <h2 style={{ 
-                  fontSize: '1.5rem', 
-                  fontWeight: '300', 
-                  color: 'white',
-                  margin: 0
-                }}>
-                  {job.title}
-                </h2>
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'flex-start', 
+                justifyContent: 'space-between', 
+                position: 'relative', 
+                zIndex: 1,
+                gap: '1rem'
+              }}>
+                <div style={{ flex: 1 }}>
+                  <h2 style={{ 
+                    fontSize: 'clamp(1.25rem, 4vw, 1.5rem)', 
+                    fontWeight: '300', 
+                    color: 'white',
+                    margin: 0
+                  }}>
+                    {job.title}
+                  </h2>
+                </div>
                 <Link href={`/careers/${job.slug}`}>
                   <button 
                     style={{
@@ -96,7 +105,8 @@ export default function CareersPage() {
                       textAlign: 'center',
                       border: 'none',
                       cursor: 'pointer',
-                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)'
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+                      flexShrink: 0
                     }}
                     onMouseOver={(e) => {
                       e.currentTarget.style.transform = 'translateY(-2px)';

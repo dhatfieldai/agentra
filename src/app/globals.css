@@ -223,6 +223,40 @@ body {
   .text-heading-1 {
     font-size: 1.875rem;
   }
+  
+  /* Mobile-specific improvements */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Ensure buttons are touch-friendly */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve scroll behavior on mobile */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Better spacing for mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Tablet-specific adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .text-display {
+    font-size: 3rem;
+  }
+  
+  .text-heading-1 {
+    font-size: 2rem;
+  }
 }
 
 /* Logo specific styles */

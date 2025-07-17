@@ -17,7 +17,7 @@ export default function AboutUsPage() {
             style={{ textAlign: 'center' }}
           >
             <h1 style={{ 
-              fontSize: '4rem', 
+              fontSize: 'clamp(2.5rem, 6vw, 4rem)', 
               fontWeight: '300', 
               marginBottom: '2rem',
               color: 'white',
@@ -28,7 +28,7 @@ export default function AboutUsPage() {
               About AURORA9
             </h1>
             <p style={{ 
-              fontSize: '1.5rem', 
+              fontSize: 'clamp(1.125rem, 3vw, 1.5rem)', 
               fontWeight: '300',
               color: 'white',
               maxWidth: '64rem', 
