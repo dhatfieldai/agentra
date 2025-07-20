@@ -3,6 +3,125 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+// Interactive Framework Card Component
+interface FrameworkSection {
+  heading: string;
+  content?: string;
+  items?: string[];
+}
+
+interface FrameworkComponent {
+  icon: string;
+  title: string;
+  sections: FrameworkSection[];
+}
+
+interface InteractiveFrameworkCardProps {
+  component: FrameworkComponent;
+}
+
+function InteractiveFrameworkCard({ component }: InteractiveFrameworkCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      whileHover={{ 
+        scale: 1.02,
+        y: -5,
+        transition: { duration: 0.3 }
+      }}
+      className="relative group cursor-pointer"
+      onClick={() => setIsExpanded(!isExpanded)}
+    >
+      <div className="relative bg-gradient-to-br from-gray-900/40 via-blue-900/40 to-purple-900/40 border border-blue-500/20 backdrop-blur-lg rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+        {/* Gradient border on hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" 
+             style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #6366f1 100%)', padding: '2px' }}>
+          <div className="h-full w-full rounded-2xl" style={{ background: 'var(--background)' }}></div>
+        </div>
+
+        {/* Header */}
+        <div className="relative p-6 bg-gradient-to-r from-blue-900/30 to-purple-900/30 border-b border-blue-500/20">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <span className="text-2xl mr-4" style={{ color: '#60a5fa' }}>{component.icon}</span>
+              <h3 className="text-lg text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text transition-all duration-300" style={{ fontWeight: '300' }}>
+                {component.title}
+              </h3>
+            </div>
+            <motion.span 
+              animate={{ rotate: isExpanded ? 45 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="text-2xl"
+              style={{ color: '#60a5fa' }}
+            >
+              +
+            </motion.span>
+          </div>
+        </div>
+
+        {/* Expandable Content */}
+        <motion.div
+          initial={{ height: 0 }}
+          animate={{ height: isExpanded ? "auto" : 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="overflow-hidden"
+        >
+          <div className="p-6 space-y-4" style={{ background: 'rgba(15, 23, 42, 0.5)' }}>
+            {component.sections.map((section, idx) => (
+              <div key={idx}>
+                <h4 className="text-base mb-2" style={{ 
+                  color: '#60a5fa', 
+                  fontWeight: '300'
+                }}>
+                  {section.heading}
+                </h4>
+                {section.content && (
+                  <p className="mb-3 leading-relaxed" style={{
+                    color: '#cbd5e1',
+                    fontSize: '0.95rem',
+                    fontWeight: '300',
+                    lineHeight: '1.6'
+                  }}>
+                    {section.content}
+                  </p>
+                )}
+                {section.items && (
+                  <ul className="space-y-2">
+                    {section.items.map((item, itemIdx) => (
+                      <li key={itemIdx} className="flex items-start">
+                        <span className="text-blue-400 mr-3 mt-1" style={{ fontSize: '0.8rem' }}>→</span>
+                        <span style={{
+                          color: '#cbd5e1',
+                          fontSize: '0.9rem',
+                          fontWeight: '300',
+                          lineHeight: '1.5'
+                        }}>
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Floating particles effect */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+          <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-4 left-4 w-1 h-1 bg-purple-400 rounded-full animate-bounce"></div>
+          <div className="absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-pink-400 rounded-full animate-ping"></div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function HowItWorksPage() {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -169,6 +288,254 @@ export default function HowItWorksPage() {
             </div>
           </motion.div>
         ))}
+      </motion.section>
+
+      {/* Interactive Framework Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="max-w-6xl mx-auto mb-16"
+      >
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl mb-6 text-white" style={{ fontWeight: '300' }}>
+            AURORA9&apos;s Autonomous AI Workforce
+          </h2>
+          <p className="max-w-4xl mx-auto leading-relaxed" style={{ 
+            color: '#cbd5e1',
+            fontSize: '1.125rem',
+            fontWeight: '300',
+            lineHeight: '1.6'
+          }}>
+            Discover the intelligent architecture that powers AURORA9&apos;s autonomous AI agents, orchestrating seamless e-commerce operations.
+          </p>
+        </div>
+
+        {/* Central Flow Diagram */}
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-8 mb-12 relative">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="relative group"
+          >
+            <div className="relative p-6 bg-gradient-to-br from-gray-900/40 via-blue-900/40 to-purple-900/40 border border-blue-500/20 backdrop-blur-lg rounded-2xl hover:shadow-2xl transition-all duration-300 min-w-[200px]">
+              <div className="absolute top-[-10px] right-[-10px] bg-gradient-to-r from-blue-600 to-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold">1</div>
+              <div className="text-4xl mb-4 text-center">👤</div>
+              <h3 className="text-xl mb-2 text-white text-center" style={{ fontWeight: '300' }}>E-commerce Seller</h3>
+              <p className="text-center" style={{ 
+                color: '#cbd5e1',
+                fontSize: '0.9rem',
+                fontWeight: '300',
+                lineHeight: '1.4'
+              }}>Sets goals & queries</p>
+            </div>
+          </motion.div>
+
+          <div className="hidden lg:block w-16 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 opacity-60"></div>
+
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative group"
+          >
+            <div className="relative p-6 bg-gradient-to-br from-gray-900/40 via-blue-900/40 to-purple-900/40 border border-blue-500/20 backdrop-blur-lg rounded-2xl hover:shadow-2xl transition-all duration-300 min-w-[240px]">
+              <div className="absolute top-[-10px] right-[-10px] bg-gradient-to-r from-blue-600 to-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold">2</div>
+              <div className="text-4xl mb-4 text-center">🧠</div>
+              <h3 className="text-xl mb-2 text-white text-center" style={{ fontWeight: '300' }}>AURORA9 AI Core</h3>
+              <p className="text-center" style={{ 
+                color: '#cbd5e1',
+                fontSize: '0.9rem',
+                fontWeight: '300',
+                lineHeight: '1.4'
+              }}>Processes, reasons, orchestrates</p>
+            </div>
+          </motion.div>
+
+          <div className="hidden lg:block w-16 h-0.5 bg-gradient-to-r from-purple-500 to-yellow-500 opacity-60"></div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="relative group"
+          >
+            <div className="relative p-6 bg-gradient-to-br from-gray-900/40 via-blue-900/40 to-purple-900/40 border border-blue-500/20 backdrop-blur-lg rounded-2xl hover:shadow-2xl transition-all duration-300 min-w-[200px]">
+              <div className="absolute top-[-10px] right-[-10px] bg-gradient-to-r from-yellow-500 to-orange-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold">3</div>
+              <div className="text-4xl mb-4 text-center">🛒</div>
+              <h3 className="text-xl mb-2 text-white text-center" style={{ fontWeight: '300' }}>Amazon Seller Central</h3>
+              <p className="text-center" style={{ 
+                color: '#cbd5e1',
+                fontSize: '0.9rem',
+                fontWeight: '300',
+                lineHeight: '1.4'
+              }}>Data source & action target</p>
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="flex justify-center mb-12"
+        >
+          <div className="relative p-6 bg-gradient-to-br from-gray-900/40 via-green-900/40 to-blue-900/40 border border-green-500/20 backdrop-blur-lg rounded-2xl hover:shadow-2xl transition-all duration-300 max-w-[300px]">
+            <div className="absolute top-[-10px] right-[-10px] bg-gradient-to-r from-green-500 to-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold">4</div>
+            <div className="text-4xl mb-4 text-center">☁️</div>
+            <h3 className="text-xl mb-2 text-white text-center" style={{ fontWeight: '300' }}>AWS Platform Foundation</h3>
+            <p className="text-center" style={{ 
+              color: '#cbd5e1',
+              fontSize: '0.9rem',
+              fontWeight: '300',
+              lineHeight: '1.4'
+            }}>Scalable, secure infrastructure</p>
+          </div>
+        </motion.div>
+
+        {/* Component Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            {
+              icon: "👁️",
+              title: "Perception System (Sensors/Inputs)",
+              sections: [
+                {
+                  heading: "Purpose",
+                  content: "The AI agent&apos;s \"eyes and ears\" that gathers real-time and historical data from Amazon Seller Central."
+                },
+                {
+                  heading: "Voice Input Integration",
+                  content: "Amazon Transcribe converts user speech into text for voice commands and queries."
+                },
+                {
+                  heading: "Data Flow Pathway",
+                  items: [
+                    "Amazon Kinesis Data Streams: Real-time event ingestion",
+                    "Amazon S3: Primary data lake for raw and processed data", 
+                    "AWS Glue Crawlers: Auto-discover and catalog schema",
+                    "Amazon Athena: Query access to data lake",
+                    "Amazon DynamoDB: High-performance real-time storage"
+                  ]
+                }
+              ]
+            },
+            {
+              icon: "🧠",
+              title: "Memory System",
+              sections: [
+                {
+                  heading: "Purpose", 
+                  content: "Stores information for context and learning across interactions."
+                },
+                {
+                  heading: "Short-Term Memory",
+                  content: "LLM context windows (Amazon Bedrock) and Amazon ElastiCache for multi-turn interactions."
+                },
+                {
+                  heading: "Long-Term Memory",
+                  content: "Amazon OpenSearch Service with Vector Engine for RAG (Retrieval Augmented Generation).",
+                  items: [
+                    "Learned rules and domain knowledge",
+                    "Historical strategies and patterns", 
+                    "Contextual business intelligence"
+                  ]
+                }
+              ]
+            },
+            {
+              icon: "⚡",
+              title: "Reasoning Engine (Cognitive Core)",
+              sections: [
+                {
+                  heading: "Purpose",
+                  content: "The \"brain\" that processes data, analyzes patterns, and determines optimal actions."
+                },
+                {
+                  heading: "Key Components",
+                  items: [
+                    "Prompt Instruction LLM: Defines agent behavior and goals",
+                    "Refined LLM: Amazon Nova Pro for specialized tasks",
+                    "RAG System: Factual accuracy from Knowledge Base", 
+                    "ML Models: Amazon SageMaker for predictive analytics"
+                  ]
+                }
+              ]
+            },
+            {
+              icon: "🎼", 
+              title: "Multi-Agent Orchestration",
+              sections: [
+                {
+                  heading: "MCP (Master Control Program)",
+                  content: "Central orchestrator powered by AWS Step Functions and Amazon Bedrock.",
+                  items: [
+                    "Breaks high-level goals into manageable sub-tasks",
+                    "Coordinates specialized AI agents",
+                    "Monitors overall workflow execution"
+                  ]
+                },
+                {
+                  heading: "Specialized AI Agents",
+                  items: [
+                    "Marketing AI Agent: PPC campaigns and advertising",
+                    "Inventory Management AI: Stock optimization and reordering",
+                    "Customer Service AI: Query handling and support"
+                  ]
+                },
+                {
+                  heading: "Agent Communication", 
+                  content: "Amazon EventBridge: Event-driven architecture for agent collaboration and shared DynamoDB states."
+                }
+              ]
+            },
+            {
+              icon: "🦾",
+              title: "Action Module (Outputs)",
+              sections: [
+                {
+                  heading: "Purpose",
+                  content: "Executes decisions made by the Reasoning Engine through concrete actions."
+                },
+                {
+                  heading: "Voice Output",
+                  content: "Amazon Polly converts text responses into natural-sounding speech for user communication."
+                },
+                {
+                  heading: "Action Tools",
+                  items: [
+                    "AWS Lambda: Executes specific functions (bid updates, reorders)",
+                    "Amazon Nova Act: Browser automation for complex workflows",
+                    "Amazon API Gateway: Secure API endpoint management"
+                  ]
+                }
+              ]
+            },
+            {
+              icon: "📈",
+              title: "Learning Mechanism", 
+              sections: [
+                {
+                  heading: "Purpose",
+                  content: "Enables continuous improvement and adaptation based on performance feedback."
+                },
+                {
+                  heading: "Learning Process",
+                  items: [
+                    "Performance monitoring and analysis",
+                    "Model retraining in Amazon SageMaker",
+                    "Strategy refinement based on outcomes",
+                    "Adaptive optimization for changing conditions"
+                  ]
+                }
+              ]
+            }
+          ].map((component, index) => (
+            <InteractiveFrameworkCard key={index} component={component} />
+          ))}
+        </div>
       </motion.section>
 
       {/* Why Choose AURORA9 Section */}

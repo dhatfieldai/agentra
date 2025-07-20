@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOCKUP: Aurora9 Interactive Framework</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0b14 0%, #1a1b2e 100%);
+            color: #cbd5e1;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .mockup-header {
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .mockup-header h1 {
+            color: #ef4444;
+            font-size: 1.5em;
+            margin: 0 0 10px 0;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5em;
+            color: #60a5fa;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .component-card {
+            background: rgba(31, 41, 55, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .component-title {
+            padding: 20px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        .component-title:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+        
+        .toggle-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+        
+        .component-title.active .toggle-icon {
+            transform: rotate(45deg);
+        }
+        
+        .component-details {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            background: rgba(15, 23, 42, 0.5);
+        }
+        
+        .component-details.open {
+            max-height: 1000px;
+            padding: 20px;
+        }
+        
+        .component-details p {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mockup-header">
+        <h1>🎯 MOCK-UP PREVIEW</h1>
+        <p>Interactive Framework for Aurora9 "How It Works" Page</p>
+    </div>
+
+    <div class="container">
+        <h1 class="section-title">How AURORA9's Autonomous AI Works</h1>
+        
+        <div class="component-card">
+            <h3 class="component-title clickable">
+                Amazon Seller Central (Backend)
+                <span class="toggle-icon">+</span>
+            </h3>
+            <div class="component-details">
+                <p><strong>Purpose:</strong> This is the primary external environment that provides raw data and action endpoints.</p>
+                <p><strong>Raw Data:</strong> Sales reports, inventory levels, advertising performance, listing details, customer inquiries.</p>
+                <p><strong>Action Endpoints:</strong> APIs to update listings, adjust bids, submit reorder requests, manage customer service.</p>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <h3 class="component-title clickable">
+                Perception System (Sensors/Inputs)
+                <span class="toggle-icon">+</span>
+            </h3>
+            <div class="component-details">
+                <p><strong>Purpose:</strong> The agent's "eyes and ears" that gathers real-time data from Amazon Seller Central.</p>
+                <p><strong>Voice Input:</strong> Amazon Transcribe integration for speech-to-text user interactions.</p>
+                <p><strong>Data Flow:</strong> Amazon Kinesis, S3 data lake, AWS Glue, Amazon Athena, DynamoDB for real-time storage.</p>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <h3 class="component-title clickable">
+                Reasoning Engine (Decision-Making Core)
+                <span class="toggle-icon">+</span>
+            </h3>
+            <div class="component-details">
+                <p><strong>Purpose:</strong> The "brain" that processes data, analyzes it, and determines actions.</p>
+                <p><strong>Components:</strong> Prompt Instruction LLM, Refined LLMs (Nova Pro), RAG System, ML Models in SageMaker.</p>
+                <p><strong>Function:</strong> Guides reasoning, prevents hallucinations, provides predictive analytics.</p>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <h3 class="component-title clickable">
+                Multi-Agent System Orchestration
+                <span class="toggle-icon">+</span>
+            </h3>
+            <div class="component-details">
+                <p><strong>MCP (Master Control Program):</strong> Central orchestrator powered by AWS Step Functions and Amazon Bedrock.</p>
+                <p><strong>Specialized Agents:</strong> Marketing AI, Inventory Management AI, each with specific responsibilities.</p>
+                <p><strong>Agent Communication:</strong> EventBridge for event-driven architecture and shared DynamoDB states.</p>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <h3 class="component-title clickable">
+                Action Module (Outputs)
+                <span class="toggle-icon">+</span>
+            </h3>
+            <div class="component-details">
+                <p><strong>Purpose:</strong> Executes decisions made by the Reasoning Engine through concrete actions.</p>
+                <p><strong>Voice Output:</strong> Amazon Polly for natural-sounding speech responses.</p>
+                <p><strong>Tools:</strong> AWS Lambda functions, Nova Act (planned), API Gateway for secure endpoints.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const componentTitles = document.querySelectorAll('.component-title.clickable');
+
+            componentTitles.forEach(title => {
+                title.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const details = this.nextElementSibling;
+                    details.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

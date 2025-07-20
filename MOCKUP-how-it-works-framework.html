@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOCKUP: How AURORA9 Works - Interactive Framework Preview</title>
+    <style>
+        /* MOCK-UP STYLING - Simulating Aurora9 Theme */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0a0b14 0%, #1a1b2e 100%);
+            color: #cbd5e1;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .mockup-header {
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .mockup-header h1 {
+            color: #ef4444;
+            font-size: 1.5em;
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+
+        .mockup-header p {
+            color: #fca5a5;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Aurora9 Theme Colors */
+        .section-title {
+            font-size: 2.5em;
+            color: #60a5fa;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 300;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.6);
+        }
+
+        .section-intro {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #cbd5e1;
+            font-weight: 300;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-subtitle {
+            font-size: 1.8em;
+            color: #60a5fa;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.2);
+            padding-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .flow-text {
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 400;
+            color: #cbd5e1;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .framework-components {
+            margin-top: 30px;
+        }
+
+        .component-card {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.4) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .component-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .component-title {
+            font-size: 1.4em;
+            padding: 20px;
+            margin: 0;
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 300;
+            transition: all 0.3s ease;
+        }
+
+        .component-title:hover {
+            background: rgba(59, 130, 246, 0.2);
+            color: #93c5fd;
+        }
+
+        .toggle-icon {
+            font-size: 1.5em;
+            line-height: 1;
+            transition: transform 0.3s ease;
+            color: #60a5fa;
+        }
+
+        .component-title.active .toggle-icon {
+            transform: rotate(45deg);
+        }
+
+        .component-details {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .component-details.open {
+            max-height: 2000px;
+            padding: 20px;
+        }
+
+        .component-details p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #cbd5e1;
+            font-weight: 300;
+        }
+
+        .component-details h4 {
+            font-size: 1.1em;
+            color: #60a5fa;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .component-details ul {
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+            margin-bottom: 15px;
+        }
+
+        .component-details li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+            padding-left: 20px;
+            position: relative;
+            color: #cbd5e1;
+            font-weight: 300;
+        }
+
+        .component-details li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+            font-weight: bold;
+        }
+
+        .component-details strong {
+            color: #93c5fd;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2em;
+            }
+            
+            .section-subtitle {
+                font-size: 1.5em;
+            }
+            
+            .component-title {
+                font-size: 1.2em;
+                padding: 15px;
+            }
+            
+            .flow-text {
+                font-size: 1.1em;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mockup-header">
+        <h1>🎯 MOCK-UP PREVIEW ONLY</h1>
+        <p>This is a preview of the interactive framework content for the "How It Works" page. No changes have been made to your live website.</p>
+    </div>
+
+    <div class="container">
+        <section id="how-it-works" class="aurora9-framework-section">
+            <h1 class="section-title">How AURORA9's Autonomous AI Works</h1>
+            <p class="section-intro">
+                AURORA9 orchestrates an intelligent, autonomous AI workforce designed to revolutionize how e-commerce sellers manage their operations. The core of this framework lies in its specialized Agentic AI Agents, guided by advanced AI principles and seamlessly integrated with the AWS Platform and Amazon Seller Central backend.
+            </p>
+
+            <div class="framework-overview">
+                <h2 class="section-subtitle">Core Communication Flow & Components:</h2>
+                <div class="flow-text">
+                    At its highest level, the flow involves continuous interaction:
+                    <br><strong>Amazon Seller Central (Backend) ↔ AURORA9's Agentic AI Agents ↔ User ↔ AWS Platform</strong>
+                </div>
+            </div>
+
+            <div class="framework-components">
+                <h2 class="section-subtitle">Detailed Framework Breakdown:</h2>
+
+                <div class="component-card">
+                    <h3 class="component-title clickable">
+                        Amazon Seller Central (Backend)
+                        <span class="toggle-icon">+</span>
+                    </h3>
+                    <div class="component-details">
+                        <p>This is the primary external environment. It provides:</p>
+                        <ul>
+                            <li><strong>Raw Data:</strong> Sales reports, inventory levels, advertising campaign performance, listing details, customer inquiries, competitor pricing (via Amazon Seller Partner APIs and AWS-internal data integration).</li>
+                            <li><strong>Action Endpoints:</strong> APIs to update listings, adjust bids, submit reorder requests, manage customer service interactions.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <h3 class="component-title clickable">
+                        Perception System (Sensors/Inputs)
+                        <span class="toggle-icon">+</span>
+                    </h3>
+                    <div class="component-details">
+                        <p><strong>Purpose:</strong> The agent's "eyes and ears." Gathers real-time and historical data from Amazon Seller Central.</p>
+                        <p><strong>New: Voice Input:</strong> Integrates Amazon Transcribe to convert user speech into text, allowing users to interact with agents via voice commands or queries.</p>
+                        <p><strong>Mechanism:</strong> Secure API calls (via AWS Lambda, AWS Glue) to Amazon Seller Partner APIs.</p>
+                        <h4>Data Flow:</h4>
+                        <ul>
+                            <li><strong>Amazon Kinesis Data Streams:</strong> For real-time event ingestion (e.g., new orders, price changes).</li>
+                            <li><strong>Amazon S3:</strong> Primary data lake for storing raw historical data and processed data.</li>
+                            <li><strong>AWS Glue Crawlers:</strong> Automatically discover and catalog schema in AWS Glue Data Catalog.</li>
+                            <li><strong>Amazon Athena:</strong> Provides query access to the data lake for insights.</li>
+                            <li><strong>Amazon DynamoDB:</strong> For high-performance, real-time data storage (e.g., live inventory tracking).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <h3 class="component-title clickable">
+                        Memory
+                        <span class="toggle-icon">+</span>
+                    </h3>
+                    <div class="component-details">
+                        <p><strong>Purpose:</strong> Stores information for context and learning.</p>
+                        <h4>Types & Tools:</h4>
+                        <ul>
+                            <li><strong>Short-Term Memory (Context/Scratchpad):</strong> Held in LLM context windows (Amazon Bedrock) and potentially ephemeral storage like Amazon ElastiCache for multi-turn interactions.</li>
+                            <li><strong>Long-Term Memory (Knowledge Base):</strong> Stores learned rules, domain-specific facts, historical strategies using Amazon OpenSearch Service (with Vector Engine) for Retrieval Augmented Generation (RAG).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <h3 class="component-title clickable">
+                        Reasoning Engine (Decision-Making/Cognitive Core)
+                        <span class="toggle-icon">+</span>
+                    </h3>
+                    <div class="component-details">
+                        <p><strong>Purpose:</strong> The "brain" that processes data, analyzes it, and determines actions.</p>
+                        <h4>Key Components:</h4>
+                        <ul>
+                            <li><strong>Prompt Instruction LLM:</strong> Defines agent behavior, priorities, goals, and available tools, guiding the LLM's reasoning and actions. This is where the Prompt Engineering expertise is applied.</li>
+                            <li><strong>Refined LLM:</strong> Specialized or fine-tuned LLMs (e.g., Amazon Nova Pro for Text & Vision, or fine-tuned Titan Lite for specific copywriting) are used for optimal performance on specific tasks.</li>
+                            <li><strong>RAG System:</strong> Integrates with the LLM to provide factual accuracy and contextual relevance by retrieving information from the Knowledge Base, preventing hallucinations.</li>
+                            <li><strong>Machine Learning Models:</strong> Predictive models (e.g., in Amazon SageMaker for sales forecasting, bid optimization) form a core part of this engine's analytical capabilities.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <h3 class="component-title clickable">
+                        Multi-Agent System Orchestration
+                        <span class="toggle-icon">+</span>
+                    </h3>
+                    <div class="component-details">
+                        <h4>MCP (Master Control Program) / Supervisor Agent:</h4>
+                        <ul>
+                            <li><strong>Purpose:</strong> The central orchestrator of the entire AI workforce. It breaks down high-level business goals into manageable sub-tasks.</li>
+                            <li><strong>Mechanism:</strong> Orchestrated by AWS Step Functions and powered by an LLM within Amazon Bedrock.</li>
+                            <li><strong>Communication:</strong> Oversees and distributes tasks to specialized AI Agents.</li>
+                        </ul>
+                        <h4>ACP (Agent Control Program) / Specialized AI Agents:</h4>
+                        <ul>
+                            <li>These are the individual, specialized agents (e.g., Marketing AI Agent, Inventory Management AI Agent).</li>
+                            <li>Each operates with its own specific tag and set of responsibilities.</li>
+                            <li><strong>Agent2Agent Communication:</strong> Agents communicate and collaborate with each other (e.g., Marketing Agent notifies Inventory Agent of a sales spike, triggering a reorder analysis). This communication is facilitated by Amazon EventBridge (event-driven architecture) and shared states in DynamoDB or passed via Step Functions.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <h3 class="component-title clickable">
+                        Action Module (Actuators/Outputs)
+                        <span class="toggle-icon">+</span>
+                    </h3>
+                    <div class="component-details">
+                        <p><strong>Purpose:</strong> Executes the decisions made by the Reasoning Engine, allowing interaction with its environment.</p>
+                        <p><strong>New: Voice Output:</strong> Utilizes Amazon Polly to convert text responses from the agent into natural-sounding speech, enabling verbal communication back to the user.</p>
+                        <p><strong>Mechanism:</strong> Converts AI decisions into concrete API calls or operations.</p>
+                        <h4>Tools:</h4>
+                        <ul>
+                            <li><strong>AWS Lambda:</strong> Executes specific action functions (e.g., updating a PPC bid via Amazon Ads API, placing a reorder).</li>
+                            <li><strong>Amazon Nova Act:</strong> (Planned incorporation) - Designed for agents to perform actions autonomously within web browsers (e.g., navigating and submitting forms on Amazon Seller Central).</li>
+                            <li><strong>Amazon API Gateway:</strong> Manages and secures API endpoints for agents to interact with other systems or for the frontend portal.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <h3 class="component-title clickable">
+                        Learning Mechanism
+                        <span class="toggle-icon">+</span>
+                    </h3>
+                    <div class="component-details">
+                        <p><strong>Purpose:</strong> Enables continuous improvement.</p>
+                        <p><strong>Mechanism:</strong> Feedback loops from actions, performance monitoring, and model retraining (e.g., in Amazon SageMaker). Agents adapt to new experiences and environmental changes.</p>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <h3 class="component-title clickable">
+                        Underlying AWS Platform (Infrastructure & Enablement)
+                        <span class="toggle-icon">+</span>
+                    </h3>
+                    <div class="component-details">
+                        <p>This is the robust, scalable, and secure foundation for all AI/ML and Agentic systems.</p>
+                        <ul>
+                            <li><strong>Amazon SageMaker:</strong> Provides the development environment (Notebook Instances) and services for building, training, and deploying ML models for agents.</li>
+                            <li><strong>AWS Security & Monitoring:</strong> IAM for fine-grained permissions, CloudWatch for metrics and logs, CloudTrail for auditing, GuardDuty/Security Hub for threat detection, AWS KMS for encryption, ensuring a "governance-first" approach.</li>
+                            <li><strong>Operational Modes:</strong> The framework supports Progressive, Semi-autonomous, and Fully Autonomous operations, providing flexibility to the seller.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Interactive functionality for the mock-up
+        document.addEventListener('DOMContentLoaded', function() {
+            const componentTitles = document.querySelectorAll('.component-title.clickable');
+
+            componentTitles.forEach(title => {
+                title.addEventListener('click', function() {
+                    // Toggle the 'active' class on the title
+                    this.classList.toggle('active');
+
+                    // Select the next sibling element (which should be component-details)
+                    const details = this.nextElementSibling;
+
+                    // Toggle the 'open' class on the details
+                    if (details.classList.contains('open')) {
+                        details.classList.remove('open');
+                    } else {
+                        details.classList.add('open');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

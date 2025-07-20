@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURORA9 Interactive Framework - Visual Mock-up</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0b14 0%, #1a1b2e 100%);
+            color: #cbd5e1;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .mockup-header {
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .mockup-header h1 {
+            color: #60a5fa;
+            font-size: 1.5em;
+            margin: 0 0 10px 0;
+            font-weight: 300;
+        }
+
+        .mockup-header p {
+            color: #cbd5e1;
+            font-weight: 300;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(10, 11, 20, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .main-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* Central Flow Diagram */
+        .central-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        /* High-Level Nodes */
+        .flow-node {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.4) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            min-width: 180px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            color: #cbd5e1;
+        }
+
+        .flow-node.user {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(147, 197, 253, 0.1) 100%);
+            border-color: #60a5fa;
+        }
+
+        .flow-node.amazon {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(251, 191, 36, 0.1) 100%);
+            border-color: #f59e0b;
+        }
+
+        .flow-node.aurora-core {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(196, 181, 253, 0.1) 100%);
+            border-color: #a855f7;
+            min-width: 220px;
+            font-weight: 300;
+        }
+
+        .flow-node.aws {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(187, 247, 208, 0.1) 100%);
+            border-color: #10b981;
+        }
+
+        .flow-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .flow-title {
+            font-weight: 300;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .flow-desc {
+            font-size: 0.9em;
+            color: #cbd5e1;
+            font-weight: 300;
+        }
+
+        /* Connection Lines */
+        .connection-line {
+            position: absolute;
+            border-top: 2px dashed #60a5fa;
+            top: 50%;
+        }
+
+        .line-1 { left: 200px; width: 120px; }
+        .line-2 { right: 200px; width: 120px; }
+        .line-3 { bottom: -30px; left: 50%; width: 100px; transform: translateX(-50%); }
+
+        /* Component Cards Grid */
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .component-card {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.4) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .component-card:hover {
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .component-header {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(96, 165, 250, 0.1) 100%);
+            color: #ffffff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .component-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+            color: #60a5fa;
+        }
+
+        .component-title {
+            font-weight: 300;
+            font-size: 1.1em;
+            flex: 1;
+            color: #ffffff;
+        }
+
+        .toggle-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+            color: #60a5fa;
+        }
+
+        .component-card.active .toggle-icon {
+            transform: rotate(45deg);
+        }
+
+        .component-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .component-content.open {
+            max-height: 800px;
+            padding: 25px;
+        }
+
+        .component-section {
+            margin-bottom: 20px;
+        }
+
+        .component-section h4 {
+            color: #60a5fa;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .component-section p {
+            color: #cbd5e1;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .component-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .component-section li {
+            color: #cbd5e1;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .component-section li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+            font-weight: bold;
+        }
+
+        .component-section strong {
+            color: #93c5fd;
+            font-weight: 400;
+        }
+
+        /* Numbered Steps */
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #60a5fa;
+            color: #0a0b14;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9em;
+            border: 2px solid rgba(96, 165, 250, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .central-flow {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .connection-line {
+                display: none;
+            }
+            
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mockup-header">
+        <h1>🎯 AURORA9 Interactive Framework Mock-up</h1>
+        <p>Visual flow diagram inspired by your reference - Click components to expand!</p>
+    </div>
+
+    <div class="container">
+        <h1 class="main-title">AURORA9's Autonomous AI Workforce</h1>
+        <h2 class="subtitle">Intelligent Agentic System in Action</h2>
+
+        <!-- Central Flow Diagram -->
+        <div class="central-flow">
+            <div class="flow-node user">
+                <div class="step-number">1</div>
+                <div class="flow-icon">👤</div>
+                <div class="flow-title">E-commerce Seller</div>
+                <div class="flow-desc">Sets goals & queries</div>
+            </div>
+
+            <div class="connection-line line-1"></div>
+
+            <div class="flow-node aurora-core">
+                <div class="step-number">2</div>
+                <div class="flow-icon">🧠</div>
+                <div class="flow-title">AURORA9 AI Core</div>
+                <div class="flow-desc">Processes, reasons, orchestrates</div>
+            </div>
+
+            <div class="connection-line line-2"></div>
+
+            <div class="flow-node amazon">
+                <div class="step-number">3</div>
+                <div class="flow-icon">🛒</div>
+                <div class="flow-title">Amazon Seller Central</div>
+                <div class="flow-desc">Data source & action target</div>
+            </div>
+        </div>
+
+        <div class="flow-node aws" style="margin: 0 auto; max-width: 300px;">
+            <div class="step-number">4</div>
+            <div class="flow-icon">☁️</div>
+            <div class="flow-title">AWS Platform Foundation</div>
+            <div class="flow-desc">Scalable, secure infrastructure</div>
+        </div>
+
+        <!-- Component Cards Grid -->
+        <div class="components-grid">
+            <!-- Perception System -->
+            <div class="component-card" onclick="toggleCard(this)">
+                <div class="component-header">
+                    <span class="component-icon">👁️</span>
+                    <span class="component-title">Perception System (Sensors/Inputs)</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="component-content">
+                    <div class="component-section">
+                        <h4>Purpose</h4>
+                        <p>The AI agent's "eyes and ears" that gathers real-time and historical data from Amazon Seller Central.</p>
+                    </div>
+                    <div class="component-section">
+                        <h4>Voice Input Integration</h4>
+                        <p><strong>Amazon Transcribe:</strong> Converts user speech into text for voice commands and queries.</p>
+                    </div>
+                    <div class="component-section">
+                        <h4>Data Flow Pathway</h4>
+                        <ul>
+                            <li><strong>Amazon Kinesis Data Streams:</strong> Real-time event ingestion</li>
+                            <li><strong>Amazon S3:</strong> Primary data lake for raw and processed data</li>
+                            <li><strong>AWS Glue Crawlers:</strong> Auto-discover and catalog schema</li>
+                            <li><strong>Amazon Athena:</strong> Query access to data lake</li>
+                            <li><strong>Amazon DynamoDB:</strong> High-performance real-time storage</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memory System -->
+            <div class="component-card" onclick="toggleCard(this)">
+                <div class="component-header">
+                    <span class="component-icon">🧠</span>
+                    <span class="component-title">Memory System</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="component-content">
+                    <div class="component-section">
+                        <h4>Purpose</h4>
+                        <p>Stores information for context and learning across interactions.</p>
+                    </div>
+                    <div class="component-section">
+                        <h4>Short-Term Memory</h4>
+                        <p><strong>Context/Scratchpad:</strong> LLM context windows (Amazon Bedrock) and Amazon ElastiCache for multi-turn interactions.</p>
+                    </div>
+                    <div class="component-section">
+                        <h4>Long-Term Memory</h4>
+                        <p><strong>Knowledge Base:</strong> Amazon OpenSearch Service with Vector Engine for RAG (Retrieval Augmented Generation).</p>
+                        <ul>
+                            <li>Learned rules and domain knowledge</li>
+                            <li>Historical strategies and patterns</li>
+                            <li>Contextual business intelligence</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reasoning Engine -->
+            <div class="component-card" onclick="toggleCard(this)">
+                <div class="component-header">
+                    <span class="component-icon">⚡</span>
+                    <span class="component-title">Reasoning Engine (Cognitive Core)</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="component-content">
+                    <div class="component-section">
+                        <h4>Purpose</h4>
+                        <p>The "brain" that processes data, analyzes patterns, and determines optimal actions.</p>
+                    </div>
+                    <div class="component-section">
+                        <h4>Key Components</h4>
+                        <ul>
+                            <li><strong>Prompt Instruction LLM:</strong> Defines agent behavior and goals</li>
+                            <li><strong>Refined LLM:</strong> Amazon Nova Pro for specialized tasks</li>
+                            <li><strong>RAG System:</strong> Factual accuracy from Knowledge Base</li>
+                            <li><strong>ML Models:</strong> Amazon SageMaker for predictive analytics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Multi-Agent Orchestration -->
+            <div class="component-card" onclick="toggleCard(this)">
+                <div class="component-header">
+                    <span class="component-icon">🎼</span>
+                    <span class="component-title">Multi-Agent Orchestration</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="component-content">
+                    <div class="component-section">
+                        <h4>MCP (Master Control Program)</h4>
+                        <p>Central orchestrator powered by <strong>AWS Step Functions</strong> and <strong>Amazon Bedrock</strong>.</p>
+                        <ul>
+                            <li>Breaks high-level goals into manageable sub-tasks</li>
+                            <li>Coordinates specialized AI agents</li>
+                            <li>Monitors overall workflow execution</li>
+                        </ul>
+                    </div>
+                    <div class="component-section">
+                        <h4>Specialized AI Agents</h4>
+                        <ul>
+                            <li><strong>Marketing AI Agent:</strong> PPC campaigns and advertising</li>
+                            <li><strong>Inventory Management AI:</strong> Stock optimization and reordering</li>
+                            <li><strong>Customer Service AI:</strong> Query handling and support</li>
+                        </ul>
+                    </div>
+                    <div class="component-section">
+                        <h4>Agent Communication</h4>
+                        <p><strong>Amazon EventBridge:</strong> Event-driven architecture for agent collaboration and shared DynamoDB states.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Module -->
+            <div class="component-card" onclick="toggleCard(this)">
+                <div class="component-header">
+                    <span class="component-icon">🦾</span>
+                    <span class="component-title">Action Module (Outputs)</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="component-content">
+                    <div class="component-section">
+                        <h4>Purpose</h4>
+                        <p>Executes decisions made by the Reasoning Engine through concrete actions.</p>
+                    </div>
+                    <div class="component-section">
+                        <h4>Voice Output</h4>
+                        <p><strong>Amazon Polly:</strong> Converts text responses into natural-sounding speech for user communication.</p>
+                    </div>
+                    <div class="component-section">
+                        <h4>Action Tools</h4>
+                        <ul>
+                            <li><strong>AWS Lambda:</strong> Executes specific functions (bid updates, reorders)</li>
+                            <li><strong>Amazon Nova Act:</strong> Browser automation for complex workflows</li>
+                            <li><strong>Amazon API Gateway:</strong> Secure API endpoint management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Mechanism -->
+            <div class="component-card" onclick="toggleCard(this)">
+                <div class="component-header">
+                    <span class="component-icon">📈</span>
+                    <span class="component-title">Learning Mechanism</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="component-content">
+                    <div class="component-section">
+                        <h4>Purpose</h4>
+                        <p>Enables continuous improvement and adaptation based on performance feedback.</p>
+                    </div>
+                    <div class="component-section">
+                        <h4>Learning Process</h4>
+                        <ul>
+                            <li>Performance monitoring and analysis</li>
+                            <li>Model retraining in Amazon SageMaker</li>
+                            <li>Strategy refinement based on outcomes</li>
+                            <li>Adaptive optimization for changing conditions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleCard(card) {
+            const content = card.querySelector('.component-content');
+            const isActive = card.classList.contains('active');
+            
+            // Close all other cards
+            document.querySelectorAll('.component-card').forEach(c => {
+                c.classList.remove('active');
+                c.querySelector('.component-content').classList.remove('open');
+            });
+            
+            // Toggle current card
+            if (!isActive) {
+                card.classList.add('active');
+                content.classList.add('open');
+            }
+        }
+    </script>
+</body>
+</html>
