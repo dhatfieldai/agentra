@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Metadata } from "next";
+import Script from "next/script";
 import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/navigation/Footer";
 
@@ -72,6 +73,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#4f46e5" />
       </head>
       <body className="bg-gray-50 dark:bg-black text-gray-900 dark:text-white antialiased">
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-HEPNETZJQP"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-HEPNETZJQP');
+          `}
+        </Script>
+        
         <div id="root">
           <Navbar />
           {children}
