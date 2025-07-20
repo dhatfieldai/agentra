@@ -1,10 +1,11 @@
 // ✅ src/components/navigation/Footer.tsx
 
-import Link from "next/link";
+import Link from 'next/link';
+import DarkModeToggle from '../ui/DarkModeToggle';
 
 export default function Footer() {
   return (
-    <footer className="py-12 border-t" style={{ background: 'var(--background)', color: 'var(--foreground)', borderColor: 'rgba(59, 130, 246, 0.2)' }}>
+    <footer className="relative py-12 border-t" style={{ background: 'var(--background)', color: 'var(--foreground)', borderColor: 'rgba(59, 130, 246, 0.2)' }}>
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
         {/* Far Left Column - About Us */}
         <div className="space-y-4 md:pr-8">
@@ -78,6 +79,9 @@ export default function Footer() {
       <div className="text-center text-xs mt-10" style={{ color: '#64748b' }}>
         &copy; {new Date().getFullYear()} AURORA9. All rights reserved.
       </div>
+
+      {/* Dark Mode Toggle positioned in bottom-right corner */}
+      <DarkModeToggle />
     </footer>
   );
 }
