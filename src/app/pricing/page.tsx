@@ -4,7 +4,32 @@ import { motion } from 'framer-motion';
 
 export default function PricingPage() {
   return (
-    <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
+    <>
+      <style jsx>{`
+        .faq-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+          gap: 2rem;
+          position: relative;
+          z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+          .faq-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+          
+          .faq-item {
+            padding: 1rem !important;
+          }
+          
+          .faq-title {
+            font-size: 1.25rem !important;
+          }
+        }
+      `}</style>
+      <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
       {/* Hero Section */}
       <div style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.1)' }}></div>
@@ -552,8 +577,8 @@ export default function PricingPage() {
             }}>
               Frequently Asked Questions
             </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', position: 'relative', zIndex: 1 }}>
-              <div style={{
+            <div className="faq-grid">
+              <div className="faq-item" style={{
                 background: 'rgba(255, 255, 255, 0.1)',
                 backdropFilter: 'blur(10px)',
                 WebkitBackdropFilter: 'blur(10px)',
@@ -565,7 +590,7 @@ export default function PricingPage() {
                 overflow: 'hidden'
               }}>
                 <div style={{ position: 'absolute', top: '0.5rem', left: '0.5rem', width: '1.5rem', height: '1.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.3rem)' }}></div>
-                <h3 style={{ 
+                <h3 className="faq-title" style={{ 
                   fontSize: '1.5rem', 
                   fontWeight: '300', 
                   color: '#cbd5e1', 
@@ -586,7 +611,7 @@ export default function PricingPage() {
                   Join our waitlist to be the first to know when pricing is announced.
                 </p>
               </div>
-              <div style={{
+              <div className="faq-item" style={{
                 background: 'rgba(255, 255, 255, 0.1)',
                 backdropFilter: 'blur(10px)',
                 WebkitBackdropFilter: 'blur(10px)',
@@ -598,7 +623,7 @@ export default function PricingPage() {
                 overflow: 'hidden'
               }}>
                 <div style={{ position: 'absolute', top: '0.5rem', left: '0.5rem', width: '1.5rem', height: '1.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.3rem)' }}></div>
-                <h3 style={{ 
+                <h3 className="faq-title" style={{ 
                   fontSize: '1.5rem', 
                   fontWeight: '300', 
                   color: '#cbd5e1', 
@@ -619,7 +644,7 @@ export default function PricingPage() {
                   of AURORA9&apos;s AI automation before making a commitment.
                 </p>
               </div>
-              <div style={{
+              <div className="faq-item" style={{
                 background: 'rgba(255, 255, 255, 0.1)',
                 backdropFilter: 'blur(10px)',
                 WebkitBackdropFilter: 'blur(10px)',
@@ -631,7 +656,7 @@ export default function PricingPage() {
                 overflow: 'hidden'
               }}>
                 <div style={{ position: 'absolute', top: '0.5rem', left: '0.5rem', width: '1.5rem', height: '1.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.3rem)' }}></div>
-                <h3 style={{ 
+                <h3 className="faq-title" style={{ 
                   fontSize: '1.5rem', 
                   fontWeight: '300', 
                   color: '#cbd5e1', 
@@ -652,7 +677,7 @@ export default function PricingPage() {
                   Our flexible pricing ensures you only pay for what you use.
                 </p>
               </div>
-              <div style={{
+              <div className="faq-item" style={{
                 background: 'rgba(255, 255, 255, 0.1)',
                 backdropFilter: 'blur(10px)',
                 WebkitBackdropFilter: 'blur(10px)',
@@ -664,7 +689,7 @@ export default function PricingPage() {
                 overflow: 'hidden'
               }}>
                 <div style={{ position: 'absolute', top: '0.5rem', left: '0.5rem', width: '1.5rem', height: '1.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.3rem)' }}></div>
-                <h3 style={{ 
+                <h3 className="faq-title" style={{ 
                   fontSize: '1.5rem', 
                   fontWeight: '300', 
                   color: '#cbd5e1', 
@@ -766,5 +791,6 @@ export default function PricingPage() {
         </motion.div>
       </div>
     </main>
+    </>
   );
 }
