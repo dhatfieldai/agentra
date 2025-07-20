@@ -657,7 +657,7 @@ export default function HowItWorksPage() {
           fontWeight: '300',
           lineHeight: '1.6'
         }}>
-          Join 5,500+ forward-thinking entrepreneurs on the AURORA9 waitlist. Get exclusive early access, special pricing, and be the first to transform your business.
+          Join 1,689+ forward-thinking entrepreneurs on the AURORA9 waitlist. Get exclusive early access, special pricing, and be the first to transform your business.
         </p>
         
         {/* Custom Email Signup Form */}

@@ -82,7 +82,7 @@ export default function Home() {
               <span className="block" style={{ color: 'var(--accent)', fontWeight: '300' }}>of E-commerce Automation</span>
             </h2>
             <p className="text-body-large mb-8 leading-relaxed" style={{ color: '#cbd5e1' }}>
-              Join 5,500+ forward-thinking entrepreneurs on the AURORA9 waitlist. 
+              Join 1,689+ forward-thinking entrepreneurs on the AURORA9 waitlist. 
               Get exclusive early access, special pricing, and be the first to transform your business.
             </p>
 
