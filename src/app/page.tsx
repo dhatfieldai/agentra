@@ -41,7 +41,7 @@ export default function Home() {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div className="space-y-2">
-                <div className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--accent)' }}>5,500</div>
+                <div className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--accent)' }}>1,689</div>
                 <div className="text-small" style={{ color: '#cbd5e1' }}>Early Adopters</div>
               </div>
               <div className="space-y-2">
