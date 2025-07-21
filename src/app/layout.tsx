@@ -5,7 +5,7 @@ import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/navigation/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aurora9.ai'),
+  metadataBase: new URL('https://aurora9agentic-ai.vercel.app'),
   title: {
     default: "AURORA9 - Autonomous AI Workforce for E-commerce",
     template: "%s | AURORA9"
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aurora9.ai",
+    url: "https://aurora9agentic-ai.vercel.app",
     title: "AURORA9 - Autonomous AI Workforce for E-commerce",
     description: "Transform your e-commerce business with AURORA9's fully autonomous Agentic AI workforce. Experience effortless, intelligent growth.",
     siteName: "AURORA9",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     creator: "@aurora9ai",
   },
   alternates: {
-    canonical: "https://aurora9.ai",
+    canonical: "https://aurora9agentic-ai.vercel.app",
   },
 };
 
