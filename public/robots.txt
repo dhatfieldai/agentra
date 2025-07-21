@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://oasis11217ai.github.io/sitemap.xml
+Sitemap: https://aurora9agentic-ai.vercel.app/sitemap.xml
