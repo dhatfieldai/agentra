@@ -1,4 +1,22 @@
 User-agent: *
 Allow: /
 
+# LinkedIn Preview Bot
+User-agent: LinkedInBot
+Allow: /
+
+# Social Media Crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Ensure social sharing pages are accessible
+Allow: /about
+Allow: /how-it-works
+Allow: /pricing
+Allow: /careers
+Allow: /press
+
 Sitemap: https://aurora9agentic-ai.vercel.app/sitemap.xml
