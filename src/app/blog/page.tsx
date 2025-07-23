@@ -26,6 +26,19 @@ export default function BlogPage() {
           }}>
             Insights, Trends & Updates from the Future of Autonomous E-commerce
           </p>
+          {/* LinkedIn Post Button */}
+          <div className="flex justify-center mt-8">
+            <a
+              href="https://www.linkedin.com/feed/update/urn:li:activity:7353224365804560385/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#0077b5] text-white font-semibold shadow-lg hover:bg-[#005983] transition-colors"
+              style={{ textDecoration: 'none' }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.838-1.563 3.036 0 3.599 2.001 3.599 4.601v5.595z"/></svg>
+              View our LinkedIn Post
+            </a>
+          </div>
         </motion.div>
 
         {/* Blog Grid */}
