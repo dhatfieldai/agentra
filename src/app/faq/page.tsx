@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Script from "next/script";
 
 const faqs = [
   {
@@ -113,10 +114,31 @@ export default function FAQPage() {
     return matchesSearch && matchesCategory;
   });
 
+  // FAQPage JSON-LD structured data for Google enhancements
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
-    <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
-      {/* Hero Section */}
-      <div style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white' }}>
+    <>
+      <Script
+        id="faq-jsonld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
+        {/* Hero Section */}
+        <div style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.1)' }}></div>
         <div style={{ position: 'relative', maxWidth: '64rem', margin: '0 auto', padding: '5rem 1.5rem' }}>
           <div style={{ textAlign: 'center' }}>
@@ -464,5 +486,6 @@ export default function FAQPage() {
         </div>
       </div>
     </main>
+    </>
   );
 }
