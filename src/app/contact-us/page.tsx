@@ -166,8 +166,12 @@ export default function ContactUsPage() {
 
               <div className="flex justify-center">
                 <ReCAPTCHA
-                  // ✅ FIX IS HERE: Added fallback string
-                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                  // ---------------------------------------------------------
+                  // ⚠️ ACTION REQUIRED: 
+                  // Delete "PASTE_YOUR_SITE_KEY_HERE" below (keep the quotes)
+                  // and paste your actual Google Site Key inside.
+                  // ---------------------------------------------------------
+                  sitekey="6LcwQU0sAAAAAIzDE3ckEvvfadGZxrPd3ExIYuXX" 
                   onChange={(token) => setCaptchaToken(token)}
                   theme="dark"
                 />
