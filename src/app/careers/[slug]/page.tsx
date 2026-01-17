@@ -117,8 +117,9 @@ export default function JobDetailsPage() {
 
               {/* ✅ The Captcha Widget (User Clicks This) */}
               <div className="flex justify-center py-4">
+                {/* 👇👇👇 PASTE YOUR SITE KEY HERE 👇👇👇 */}
                 <ReCAPTCHA
-                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} 
+                  sitekey="6LcwQU0sAAAAAIzDE3ckEvvfadGZxrPd3ExIYuXX" 
                   onChange={(token) => setCaptchaToken(token)}
                   theme="dark"
                 />
