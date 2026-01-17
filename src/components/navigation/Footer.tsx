@@ -57,7 +57,7 @@ export default function Footer() {
           {/* Social Media */}
           <div className="mt-6 pt-4 border-t border-gray-200 dark:border-zinc-700 md:flex md:justify-end">
             <a
-              href="https://www.linkedin.com/in/aurora9-ai-agent-09a253364/"
+              href="https://www.linkedin.com/company/aurora9/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-3 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105"

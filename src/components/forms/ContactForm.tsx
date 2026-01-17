@@ -59,7 +59,7 @@ const ContactForm = () => {
                 contactPoint: {
                   "@type": "ContactPoint",
                   contactType: "Customer Support",
-                  email: "aurora9ai@gmail.com",
+                  email: "aurora9@aurora9.ai",
                 },
               },
             }),

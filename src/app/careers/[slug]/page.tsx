@@ -1,110 +1,49 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { jobs, Job } from "../jobs";
-import { notFound } from "next/navigation";
-import { useParams } from "next/navigation";
-import Head from "next/head";
+import { notFound, useParams } from "next/navigation";
 import { Toaster, toast } from "react-hot-toast";
+import { useForm, ValidationError } from "@formspree/react"; // ✅ Official Engine
+import ReCAPTCHA from "react-google-recaptcha"; // ✅ Security Widget
 
 export default function JobDetailsPage() {
   const { slug } = useParams();
   
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    address: "",
-    city: "",
-    state: "",
-    zipCode: "",
-    country: "United States",
-    message: "",
-    resume: null as File | null,
-    coverLetter: null as File | null,
-  });
-
-  // Add error handling for jobs import
-  if (!jobs || !Array.isArray(jobs)) {
-    console.error("Jobs array is not available or malformed");
-    return <div>Error loading jobs data</div>;
-  }
+  // 1. Setup Formspree Hook
+  const [state, handleSubmit] = useForm("xqabvgdv"); 
   
-  const job = jobs.find((job: Job) => job.slug === slug);
+  // 2. Setup Captcha State
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const job = jobs?.find((job: Job) => job.slug === slug);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name } = e.target;
-    const file = e.target.files?.[0] || null;
-    setFormData({ ...formData, [name]: file });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const formPayload = new FormData();
-    formPayload.append("firstName", formData.firstName);
-    formPayload.append("lastName", formData.lastName);
-    formPayload.append("email", formData.email);
-    formPayload.append("phone", formData.phone);
-    formPayload.append("address", formData.address);
-    formPayload.append("city", formData.city);
-    formPayload.append("state", formData.state);
-    formPayload.append("zipCode", formData.zipCode);
-    formPayload.append("country", formData.country);
-    formPayload.append("message", formData.message);
-    formPayload.append("position", job?.title || "Unknown Position");
-    if (formData.resume) formPayload.append("resume", formData.resume);
-    if (formData.coverLetter) formPayload.append("coverLetter", formData.coverLetter);
-
-    try {
-      const res = await fetch("https://formspree.io/f/xqabvgdv", {
-        method: "POST",
-        body: formPayload,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (res.ok) {
-        toast.success("Application submitted successfully! ✅");
-        setFormData({ 
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
-          address: "",
-          city: "",
-          state: "",
-          zipCode: "",
-          country: "United States",
-          message: "",
-          resume: null,
-          coverLetter: null,
-        });
-      } else {
-        toast.error("Submission failed. Please try again later.");
-      }
-    } catch {
-      toast.error("Something went wrong. Please try again.");
+  // Handle Success
+  useEffect(() => {
+    if (state.succeeded) {
+      toast.success("Application submitted successfully! ✅");
+      // Optional: Clear captcha if needed
+      setCaptchaToken(null);
     }
-  };
+  }, [state.succeeded]);
 
+  // Handle Error
+  useEffect(() => {
+    if (state.errors) {
+      // Log the error to console so you can see it
+      console.error("Formspree Error:", state.errors);
+      toast.error("Submission failed. Check console for details.");
+    }
+  }, [state.errors]);
+
+  if (!jobs || !Array.isArray(jobs)) return <div>Error loading jobs</div>;
   if (!job) return notFound();
 
   return (
     <>
-      <Head>
-        <title>{job.title} | AURORA9 Careers</title>
-        <meta name="description" content={`Apply for the ${job.title} role at AURORA9`} />
-      </Head>
       <main className="max-w-3xl mx-auto py-12 px-4" style={{ color: 'var(--foreground)' }}>
-        <Toaster />
+        <Toaster position="top-center" />
+        
         <h1 className="text-display mb-6 text-white text-center">{job.title}</h1>
         <p className="text-body mb-8 text-center" style={{ color: '#cbd5e1' }}>
           Location: Remote | Department: {job.department}
@@ -115,205 +54,89 @@ export default function JobDetailsPage() {
           ))}
         </article>
 
-        <form 
-          onSubmit={handleSubmit} 
-          className="space-y-4 p-8 rounded-lg shadow-lg backdrop-blur-sm"
-          style={{ 
-            background: 'rgba(15, 23, 42, 0.6)', 
-            borderColor: 'rgba(59, 130, 246, 0.2)',
-            backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(59, 130, 246, 0.2)'
-          }}
-        >
-          <h2 className="text-heading-2 mb-6 text-white">Apply Now</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              required
-              value={formData.firstName}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        {state.succeeded ? (
+             <div className="p-8 rounded-lg text-center bg-green-900/30 border border-green-500/30">
+                <h2 className="text-2xl text-white mb-2">Thank you for applying!</h2>
+                <p className="text-gray-300">We have received your application and will review it shortly.</p>
+             </div>
+        ) : (
+            <form 
+              onSubmit={handleSubmit} // ✅ Library handles the heavy lifting
+              encType="multipart/form-data" 
+              className="space-y-4 p-8 rounded-lg shadow-lg backdrop-blur-sm"
               style={{ 
-                background: 'rgba(30, 41, 59, 0.5)', 
-                border: '1px solid rgba(59, 130, 246, 0.3)'
+                background: 'rgba(15, 23, 42, 0.6)', 
+                borderColor: 'rgba(59, 130, 246, 0.2)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(59, 130, 246, 0.2)'
               }}
-            />
+            >
+              <h2 className="text-heading-2 mb-6 text-white">Apply Now</h2>
 
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              required
-              value={formData.lastName}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              style={{ 
-                background: 'rgba(30, 41, 59, 0.5)', 
-                border: '1px solid rgba(59, 130, 246, 0.3)'
-              }}
-            />
-          </div>
+              {/* ⚠️ THE MAGIC BRIDGE: This hidden input sends the token to Formspree */}
+              <input type="hidden" name="g-recaptcha-response" value={captchaToken || ""} />
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            style={{ 
-              background: 'rgba(30, 41, 59, 0.5)', 
-              border: '1px solid rgba(59, 130, 246, 0.3)'
-            }}
-          />
+              {/* Hidden field to track position */}
+              <input type="hidden" name="position" value={job.title} />
 
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number (with area code)"
-            required
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            style={{ 
-              background: 'rgba(30, 41, 59, 0.5)', 
-              border: '1px solid rgba(59, 130, 246, 0.3)'
-            }}
-          />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" name="firstName" placeholder="First Name" required className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }} />
+                <input type="text" name="lastName" placeholder="Last Name" required className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }} />
+              </div>
 
-          <input
-            type="text"
-            name="address"
-            placeholder="Street Address"
-            required
-            value={formData.address}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            style={{ 
-              background: 'rgba(30, 41, 59, 0.5)', 
-              border: '1px solid rgba(59, 130, 246, 0.3)'
-            }}
-          />
+              <input type="email" name="email" placeholder="Email Address" required className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }} />
+              <ValidationError prefix="Email" field="email" errors={state.errors} />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <input
-              type="text"
-              name="city"
-              placeholder="City"
-              required
-              value={formData.city}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              style={{ 
-                background: 'rgba(30, 41, 59, 0.5)', 
-                border: '1px solid rgba(59, 130, 246, 0.3)'
-              }}
-            />
+              <input type="tel" name="phone" placeholder="Phone Number" required className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }} />
 
-            <input
-              type="text"
-              name="state"
-              placeholder="State/Province"
-              required
-              value={formData.state}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              style={{ 
-                background: 'rgba(30, 41, 59, 0.5)', 
-                border: '1px solid rgba(59, 130, 246, 0.3)'
-              }}
-            />
+              <input type="text" name="address" placeholder="Address" required className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }} />
 
-            <input
-              type="text"
-              name="zipCode"
-              placeholder="ZIP/Postal Code"
-              required
-              value={formData.zipCode}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              style={{ 
-                background: 'rgba(30, 41, 59, 0.5)', 
-                border: '1px solid rgba(59, 130, 246, 0.3)'
-              }}
-            />
-          </div>
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <input type="text" name="city" placeholder="City" required className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }} />
+                <input type="text" name="state" placeholder="State" required className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }} />
+                <input type="text" name="zipCode" placeholder="ZIP" required className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }} />
+              </div>
 
-          <select
-            name="country"
-            required
-            value={formData.country}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-lg text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            style={{ 
-              background: 'rgba(30, 41, 59, 0.5)', 
-              border: '1px solid rgba(59, 130, 246, 0.3)'
-            }}
-          >
-            <option value="United States" className="bg-slate-800">United States</option>
-            <option value="Canada" className="bg-slate-800">Canada</option>
-          </select>
+              <select name="country" required className="w-full px-4 py-3 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
+                <option value="United States" className="bg-slate-800">United States</option>
+                <option value="Canada" className="bg-slate-800">Canada</option>
+              </select>
 
-          <textarea
-            name="message"
-            placeholder="Cover Letter / Additional Message"
-            rows={5}
-            required
-            value={formData.message}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            style={{ 
-              background: 'rgba(30, 41, 59, 0.5)', 
-              border: '1px solid rgba(59, 130, 246, 0.3)'
-            }}
-          ></textarea>
+              <textarea name="message" placeholder="Message" rows={5} required className="w-full px-4 py-3 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }}></textarea>
 
-          <div className="space-y-2">
-            <label className="block text-body font-medium text-white">Resume (Required)</label>
-            <input 
-              type="file" 
-              name="resume" 
-              accept=".pdf,.doc,.docx" 
-              required
-              onChange={handleFileChange}
-              className="w-full px-4 py-3 rounded-lg text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-500 file:text-white hover:file:bg-blue-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              style={{ 
-                background: 'rgba(30, 41, 59, 0.5)', 
-                border: '1px solid rgba(59, 130, 246, 0.3)'
-              }}
-            />
-          </div>
+              <div className="space-y-2">
+                <label className="block text-body font-medium text-white">Resume (Required)</label>
+                <input type="file" name="resume" accept=".pdf,.doc,.docx" required className="w-full px-4 py-3 rounded-lg text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-500 file:text-white hover:file:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }} />
+                <ValidationError prefix="Resume" field="resume" errors={state.errors} />
+              </div>
 
-          <div className="space-y-2">
-            <label className="block text-body font-medium text-white">Cover Letter (Optional)</label>
-            <input 
-              type="file" 
-              name="coverLetter" 
-              accept=".pdf,.doc,.docx" 
-              onChange={handleFileChange}
-              className="w-full px-4 py-3 rounded-lg text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-500 file:text-white hover:file:bg-blue-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              style={{ 
-                background: 'rgba(30, 41, 59, 0.5)', 
-                border: '1px solid rgba(59, 130, 246, 0.3)'
-              }}
-            />
-          </div>
+              <div className="space-y-2">
+                <label className="block text-body font-medium text-white">Cover Letter (Optional)</label>
+                <input type="file" name="coverLetter" accept=".pdf,.doc,.docx" className="w-full px-4 py-3 rounded-lg text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-500 file:text-white hover:file:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }} />
+              </div>
 
-          <button
-            type="submit"
-            className="w-full px-6 py-4 text-white text-body font-medium rounded-lg transition-all duration-300 hover:shadow-lg"
-            style={{ 
-              background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
-              boxShadow: '0 4px 15px rgba(59, 130, 246, 0.3)'
-            }}
-          >
-            Submit Application
-          </button>
-        </form>
+              {/* ✅ The Captcha Widget (User Clicks This) */}
+              <div className="flex justify-center py-4">
+                <ReCAPTCHA
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} 
+                  onChange={(token) => setCaptchaToken(token)}
+                  theme="dark"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={state.submitting || !captchaToken} // Disable if sending OR no captcha
+                className="w-full px-6 py-4 text-white text-body font-medium rounded-lg transition-all duration-300 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ 
+                  background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
+                  boxShadow: '0 4px 15px rgba(59, 130, 246, 0.3)'
+                }}
+              >
+                {state.submitting ? "Sending..." : "Submit Application"}
+              </button>
+            </form>
+        )}
       </main>
     </>
   );

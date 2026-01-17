@@ -36,12 +36,15 @@ export default function ContactUsPage() {
     try {
       const res = await fetch("https://formspree.io/f/mvgrjgjp", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json" 
+        },
         body: JSON.stringify(payload)
       });
 
       if (res.ok) {
-        toast.success("✅ Your message has been sent successfully!");
+        toast.success("✅ Message sent successfully!");
         formRef.current?.reset();
         setCaptchaToken(null);
         setFormData({ name: "", email: "", message: "" });
@@ -55,6 +58,8 @@ export default function ContactUsPage() {
 
   return (
     <main className="min-h-screen pt-20" style={{ background: 'var(--background)' }}>
+      <Toaster position="top-center" reverseOrder={false} />
+      
       <div className="container mx-auto px-6 py-16">
         {/* Hero Section */}
         <motion.div
@@ -110,7 +115,6 @@ export default function ContactUsPage() {
             </div>
 
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-8 max-w-2xl mx-auto">
-              <Toaster />
               
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold mb-3 text-white">
@@ -162,7 +166,8 @@ export default function ContactUsPage() {
 
               <div className="flex justify-center">
                 <ReCAPTCHA
-                  sitekey="6LcEHoIrAAAAAD4P8GnUIlUztV45sBZFux3nMt57"
+                  // ✅ FIX IS HERE: Added fallback string
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
                   onChange={(token) => setCaptchaToken(token)}
                   theme="dark"
                 />
@@ -193,7 +198,7 @@ export default function ContactUsPage() {
               </div>
               <h3 className="text-xl font-bold text-white mb-2">Email Support</h3>
               <p className="text-gray-300 text-sm">
-                aurora9ai@gmail.com
+                aurora9@aurora9.ai
               </p>
             </div>
 

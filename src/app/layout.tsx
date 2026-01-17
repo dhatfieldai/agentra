@@ -5,7 +5,8 @@ import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/navigation/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aurora9agentic-ai.vercel.app'),
+  // ✅ FIX 1: Point to the real domain
+  metadataBase: new URL('https://www.aurora9.ai'),
   title: {
     default: "AURORA9 - Autonomous AI Workforce for E-commerce",
     template: "%s | AURORA9"
@@ -38,7 +39,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aurora9agentic-ai.vercel.app",
+    // ✅ FIX 2: Point to the real domain
+    url: "https://www.aurora9.ai",
     title: "AURORA9 - Autonomous AI Workforce for E-commerce",
     description: "Transform your e-commerce business with AURORA9's fully autonomous Agentic AI workforce. Experience effortless, intelligent growth.",
     siteName: "AURORA9",
@@ -59,7 +61,8 @@ export const metadata: Metadata = {
     creator: "@aurora9ai",
   },
   alternates: {
-    canonical: "https://aurora9agentic-ai.vercel.app",
+    // ✅ FIX 3: Canonical URL points to real domain
+    canonical: "https://www.aurora9.ai",
   },
 };
 
@@ -72,7 +75,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#4f46e5" />
       </head>
-      <body className="bg-gray-50 dark:bg-black text-gray-900 dark:text-white antialiased">
+      
+      {/* ✅ FIX 4: Added suppressHydrationWarning to kill the red console error */}
+      <body 
+        className="bg-gray-50 dark:bg-black text-gray-900 dark:text-white antialiased"
+        suppressHydrationWarning={true}
+      >
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 

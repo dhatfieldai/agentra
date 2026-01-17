@@ -3,10 +3,77 @@
 import { motion } from 'framer-motion';
 
 export default function PricingPage() {
+  const pricingPlans = [
+    {
+      title: "FREEMIUM",
+      price: "$0",
+      period: "",
+      description: "Essential audit capabilities for new sellers.",
+      variableFee: "Variable Fee: $0",
+      highlighted: false,
+      features: [
+        { text: "Free Daily Policy Audit", check: true },
+        { text: "Max 10 ASINs", check: true },
+        { text: "Progressive (Read-Only)", check: true },
+        { text: "Semi-Autonomous Actions", check: false },
+        { text: "Full Agent Workforce", check: false }
+      ],
+      buttonText: "Start Free Audit"
+    },
+    {
+      title: "STANDARD",
+      price: "$499",
+      period: "/mo",
+      description: "Core automation for growing brands.",
+      variableFee: "Variable Fee: $0",
+      highlighted: true,
+      features: [
+        { text: "2 Core Agents", check: true },
+        { text: "Semi-Autonomous Default", check: true },
+        { text: "Supported SKUs: Up to 500", check: true },
+        { text: "Policy Compliance Checks", check: true },
+        { text: "Full Autonomous Control", check: false }
+      ],
+      buttonText: "Upgrade & Launch"
+    },
+    {
+      title: "ENTERPRISE",
+      price: "$1,999",
+      period: "/mo",
+      description: "Full workforce automation for scale.",
+      variableFee: "Service Fee: 3% of Verified ROI",
+      highlighted: false,
+      features: [
+        { text: "Full Agent Workforce", check: true },
+        { text: "Autonomous (Full Control)", check: true },
+        { text: "Omni-Synergy™ Integration", check: true },
+        { text: "Real-time Verified ROI", check: true },
+        { text: "Unlimited SKUs", check: true }
+      ],
+      buttonText: "Upgrade & Launch"
+    },
+    {
+      title: "CUSTOM",
+      price: "Bespoke",
+      period: "",
+      description: "Tailored infrastructure for aggregators.",
+      variableFee: "Negotiated Fee",
+      highlighted: false,
+      features: [
+        { text: "Full Agent Policy ASINs™", check: true },
+        { text: "Dedicated Compute", check: true },
+        { text: "Custom Agents", check: true },
+        { text: "Negotiated Per-Metric Billing", check: true },
+        { text: "White-Glove Onboarding", check: true }
+      ],
+      buttonText: "Contact Sales"
+    }
+  ];
+
   return (
     <>
       <style jsx>{`
-        .faq-grid {
+        .faq-grid, .pillars-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
           gap: 2rem;
@@ -14,14 +81,21 @@ export default function PricingPage() {
           z-index: 1;
         }
         
+        .pricing-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+           gap: 2rem;
+           margin-bottom: 4rem;
+        }
+
         @media (max-width: 768px) {
-          .faq-grid {
+          .faq-grid, .pillars-grid, .pricing-grid {
             grid-template-columns: 1fr;
             gap: 1rem;
           }
           
-          .faq-item {
-            padding: 1rem !important;
+          .faq-item, .pricing-card {
+            padding: 1.5rem !important;
           }
           
           .faq-title {
@@ -49,7 +123,7 @@ export default function PricingPage() {
               position: 'relative',
               zIndex: 1
             }}>
-              Choose Your Plan
+              AURORA9 Hybrid Pricing
             </h1>
             <p style={{ 
               fontSize: '1.5rem', 
@@ -62,487 +136,128 @@ export default function PricingPage() {
               position: 'relative',
               zIndex: 1
             }}>
-              Select the perfect AURORA9 plan to revolutionize your e-commerce automation. 
-              Our AI agents work 24/7 to optimize your business operations and maximize growth.
+               Lean on us while the Rule-Inducing Prioritized status handles the tedious workloads.
             </p>
           </motion.div>
         </div>
         {/* Floating particles */}
         <div style={{ position: 'absolute', top: '2.5rem', left: '2.5rem', width: '5rem', height: '5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(1rem)' }}></div>
         <div style={{ position: 'absolute', bottom: '2.5rem', right: '2.5rem', width: '8rem', height: '8rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(1rem)' }}></div>
-        <div style={{ position: 'absolute', top: '50%', left: '10%', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.05)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
-        <div style={{ position: 'absolute', bottom: '20%', right: '15%', width: '4rem', height: '4rem', background: 'rgba(255,255,255,0.05)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
       </div>
 
       <div style={{ maxWidth: '96rem', margin: '0 auto', padding: '3rem 1.5rem' }}>
 
         {/* Pricing Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
-          {/* Starter Plan */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              borderRadius: '1rem',
-              padding: '2rem',
-              border: '1px solid rgba(203, 213, 225, 0.3)',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-              position: 'relative',
-              overflow: 'hidden',
-              transition: 'all 0.3s ease'
-            }}
-            whileHover={{ 
-              scale: 1.02,
-              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            {/* Floating particles */}
-            <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
-            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
-
-            <div style={{ textAlign: 'center', marginBottom: '2rem', position: 'relative', zIndex: 1 }}>
-              <h3 style={{ 
-                fontSize: '2rem', 
-                fontWeight: '300', 
-                color: '#cbd5e1', 
-                marginBottom: '1rem'
-              }}>
-                Starter
-              </h3>
-              <div style={{ 
-                fontSize: '2.5rem', 
-                fontWeight: '300', 
-                color: '#cbd5e1', 
-                marginBottom: '1rem'
-              }}>
-                To be Announced
-              </div>
-              <p style={{ 
-                fontSize: '1rem', 
-                color: '#cbd5e1',
-                fontWeight: '300',
-                lineHeight: '1.6'
-              }}>
-                Perfect for small businesses starting their automation journey
-              </p>
-            </div>
-
-            <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem', position: 'relative', zIndex: 1 }}>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                1 AI Agent
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                Basic E-commerce Integration
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                24/7 Customer Support
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                Performance Analytics
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                Monthly Reports
-              </li>
-            </ul>
-
-            <a 
-              href="/contact-us" 
+        <div className="pricing-grid">
+          {pricingPlans.map((plan, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 * index }}
+              className="pricing-card"
               style={{
-                display: 'block',
-                width: '100%',
-                padding: '1rem 1.5rem',
-                borderRadius: '0.5rem',
-                fontWeight: '600',
-                textAlign: 'center',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-                background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-                color: 'white',
-                border: 'none',
+                background: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                borderRadius: '1rem',
+                padding: '2rem',
+                border: plan.highlighted ? '1px solid rgba(79, 172, 254, 0.5)' : '1px solid rgba(203, 213, 225, 0.3)',
                 boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
                 position: 'relative',
-                zIndex: 1
+                overflow: 'hidden',
+                transition: 'all 0.3s ease'
               }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)';
-              }}
+              whileHover={{ scale: 1.02, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)' }}
             >
-              Join Waitlist
-            </a>
-          </motion.div>
+              {plan.highlighted && (
+                <div style={{ position: 'absolute', top: '-1rem', left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', color: 'white', padding: '0.5rem 1.5rem', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: '600', zIndex: 2 }}>
+                  Most Popular
+                </div>
+              )}
 
-          {/* Professional Plan */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              borderRadius: '1rem',
-              padding: '2rem',
-              border: '1px solid rgba(79, 172, 254, 0.5)',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-              position: 'relative',
-              overflow: 'hidden',
-              transition: 'all 0.3s ease'
-            }}
-            whileHover={{ 
-              scale: 1.02,
-              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            {/* Most Popular Badge */}
-            <div style={{
-              position: 'absolute',
-              top: '-1rem',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-              color: 'white',
-              padding: '0.5rem 1.5rem',
-              borderRadius: '9999px',
-              fontSize: '0.875rem',
-              fontWeight: '600',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)'
-            }}>
-              Most Popular
-            </div>
-
-            {/* Floating particles */}
-            <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
-            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
-
-            <div style={{ textAlign: 'center', marginBottom: '2rem', position: 'relative', zIndex: 1 }}>
-              <h3 style={{ 
-                fontSize: '2rem', 
-                fontWeight: '300', 
-                color: '#cbd5e1', 
-                marginBottom: '1rem'
-              }}>
-                Professional
-              </h3>
-              <div style={{ 
-                fontSize: '2.5rem', 
-                fontWeight: '300', 
-                color: '#cbd5e1', 
-                marginBottom: '1rem'
-              }}>
-                To be Announced
+              <div style={{ textAlign: 'center', marginBottom: '2rem', position: 'relative', zIndex: 1 }}>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: '300', color: '#cbd5e1', marginBottom: '0.5rem' }}>{plan.title}</h3>
+                <div style={{ fontSize: '2.5rem', fontWeight: '300', color: '#fff', marginBottom: '0.5rem' }}>
+                  {plan.price}<span style={{fontSize: '1rem', color: '#94a3b8'}}>{plan.period}</span>
+                </div>
+                <p style={{ fontSize: '0.875rem', color: '#cbd5e1', fontWeight: '300', lineHeight: '1.6' }}>
+                  {plan.description}
+                </p>
+                {/* Variable Fee Badge */}
+                <div style={{ marginTop: '1rem', padding: '0.5rem', background: 'rgba(255,255,255,0.05)', borderRadius: '0.5rem', fontSize: '0.875rem', color: '#4facfe' }}>
+                  {plan.variableFee}
+                </div>
               </div>
-              <p style={{ 
-                fontSize: '1rem', 
-                color: '#cbd5e1',
-                fontWeight: '300',
-                lineHeight: '1.6'
-              }}>
-                Ideal for growing businesses ready to scale
-              </p>
-            </div>
 
-            <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem', position: 'relative', zIndex: 1 }}>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                5 AI Agents
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                Advanced E-commerce Integration
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                Priority Support
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                Real-time Analytics
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                Custom Workflows
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                API Access
-              </li>
-            </ul>
+              <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem', position: 'relative', zIndex: 1 }}>
+                {plan.features.map((item, i) => (
+                  <li key={i} style={{ color: item.check ? '#cbd5e1' : '#64748b', fontWeight: '300', marginBottom: '1rem', display: 'flex', alignItems: 'flex-start' }}>
+                    <span style={{ color: item.check ? '#4facfe' : '#ef4444', marginRight: '0.75rem' }}>{item.check ? '✓' : '✕'}</span>
+                    {item.text}
+                  </li>
+                ))}
+              </ul>
 
-            <a 
-              href="/contact-us" 
-              style={{
-                display: 'block',
-                width: '100%',
-                padding: '1rem 1.5rem',
-                borderRadius: '0.5rem',
-                fontWeight: '600',
-                textAlign: 'center',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-                background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-                color: 'white',
-                border: 'none',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-                position: 'relative',
-                zIndex: 1
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)';
-              }}
-            >
-              Join Waitlist
-            </a>
-          </motion.div>
-
-          {/* Enterprise Plan */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              borderRadius: '1rem',
-              padding: '2rem',
-              border: '1px solid rgba(203, 213, 225, 0.3)',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-              position: 'relative',
-              overflow: 'hidden',
-              transition: 'all 0.3s ease'
-            }}
-            whileHover={{ 
-              scale: 1.02,
-              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            {/* Floating particles */}
-            <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
-            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
-
-            <div style={{ textAlign: 'center', marginBottom: '2rem', position: 'relative', zIndex: 1 }}>
-              <h3 style={{ 
-                fontSize: '2rem', 
-                fontWeight: '300', 
-                color: '#cbd5e1', 
-                marginBottom: '1rem'
+              <a href="/contact-us" style={{ 
+                display: 'block', 
+                width: '100%', 
+                padding: '1rem', 
+                borderRadius: '0.5rem', 
+                fontWeight: '600', 
+                textAlign: 'center', 
+                background: plan.highlighted ? 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' : 'rgba(255,255,255,0.1)', 
+                color: 'white', 
+                textDecoration: 'none', 
+                border: plan.highlighted ? 'none' : '1px solid rgba(255,255,255,0.2)' 
               }}>
-                Enterprise
-              </h3>
-              <div style={{ 
-                fontSize: '2.5rem', 
-                fontWeight: '300', 
-                color: '#cbd5e1', 
-                marginBottom: '1rem'
-              }}>
-                To be Announced
-              </div>
-              <p style={{ 
-                fontSize: '1rem', 
-                color: '#cbd5e1',
-                fontWeight: '300',
-                lineHeight: '1.6'
-              }}>
-                For large organizations requiring maximum automation
-              </p>
-            </div>
-
-            <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem', position: 'relative', zIndex: 1 }}>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                Unlimited AI Agents
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                Full Platform Integration
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                Dedicated Account Manager
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                Advanced Analytics Suite
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                Custom Development
-              </li>
-              <li style={{ 
-                color: '#cbd5e1', 
-                fontWeight: '300', 
-                lineHeight: '1.6', 
-                marginBottom: '1rem', 
-                display: 'flex', 
-                alignItems: 'flex-start' 
-              }}>
-                <span style={{ color: '#4facfe', marginRight: '0.75rem', marginTop: '0.125rem' }}>✓</span>
-                White-label Solutions
-              </li>
-            </ul>
-
-            <a 
-              href="/contact-us" 
-              style={{
-                display: 'block',
-                width: '100%',
-                padding: '1rem 1.5rem',
-                borderRadius: '0.5rem',
-                fontWeight: '600',
-                textAlign: 'center',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-                background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-                color: 'white',
-                border: 'none',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-                position: 'relative',
-                zIndex: 1
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)';
-              }}
-            >
-              Contact Sales
-            </a>
-          </motion.div>
+                {plan.buttonText}
+              </a>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Explanation Section */}
+         <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          style={{ marginBottom: '4rem' }}
+        >
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            border: '1px solid rgba(203, 213, 225, 0.3)',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+          }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '300', color: '#cbd5e1', marginBottom: '2rem', textAlign: 'center' }}>
+              Explanation Section
+            </h2>
+            <div className="pillars-grid">
+               <div>
+                  <h3 style={{ fontSize: '1.25rem', color: '#fff', marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+                     <span style={{ width: '4px', height: '1.5rem', background: '#4facfe', marginRight: '1rem', borderRadius: '4px' }}></span>
+                     Pillar 1: Fixed Subscription
+                  </h3>
+                  <p style={{ color: '#cbd5e1', fontWeight: '300', lineHeight: '1.6' }}>
+                    For Daily Functionality and Max Uptime. This base rate covers core infrastructure, ensuring your autonomous workforce is continuously monitoring your account.
+                  </p>
+               </div>
+               <div>
+                  <h3 style={{ fontSize: '1.25rem', color: '#fff', marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+                     <span style={{ width: '4px', height: '1.5rem', background: '#00f2fe', marginRight: '1rem', borderRadius: '4px' }}></span>
+                     Pillar 2: Variable Service Fee
+                  </h3>
+                  <p style={{ color: '#cbd5e1', fontWeight: '300', lineHeight: '1.6' }}>
+                    Why This Model Aligns with Your Success: Autonomous actions that generate verified ROI incur a small performance fee, ensuring you only pay for value delivered.
+                  </p>
+               </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* FAQ Section */}
         <motion.div
@@ -562,10 +277,6 @@ export default function PricingPage() {
             position: 'relative',
             overflow: 'hidden'
           }}>
-            {/* Floating particles */}
-            <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
-            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
-            
             <h2 style={{ 
               fontSize: '3rem', 
               fontWeight: '300', 
@@ -578,138 +289,29 @@ export default function PricingPage() {
               Frequently Asked Questions
             </h2>
             <div className="faq-grid">
-              <div className="faq-item" style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
-                borderRadius: '1rem',
-                padding: '1.5rem',
-                border: '1px solid rgba(203, 213, 225, 0.3)',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <div style={{ position: 'absolute', top: '0.5rem', left: '0.5rem', width: '1.5rem', height: '1.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.3rem)' }}></div>
-                <h3 className="faq-title" style={{ 
-                  fontSize: '1.5rem', 
-                  fontWeight: '300', 
-                  color: '#cbd5e1', 
-                  marginBottom: '1rem',
-                  position: 'relative',
-                  zIndex: 1
+              {[
+                { q: "When will pricing be available?", a: "We're finalizing our pricing structure to ensure maximum value for our customers. Join our waitlist to be the first to know when pricing is announced." },
+                { q: "Is there a free trial?", a: "Yes! We'll offer a comprehensive free trial so you can experience the power of AURORA9's AI automation before making a commitment." },
+                { q: "Can I upgrade or downgrade plans?", a: "Absolutely! You can change your plan at any time to match your business needs. Our flexible pricing ensures you only pay for what you use." },
+                { q: "What support is included?", a: "All plans include 24/7 customer support. Professional and Enterprise plans get priority support and dedicated account management." }
+              ].map((faq, i) => (
+                <div className="faq-item" key={i} style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  borderRadius: '1rem',
+                  padding: '1.5rem',
+                  border: '1px solid rgba(203, 213, 225, 0.3)',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
                 }}>
-                  When will pricing be available?
-                </h3>
-                <p style={{ 
-                  color: '#cbd5e1',
-                  fontWeight: '300',
-                  lineHeight: '1.6',
-                  position: 'relative',
-                  zIndex: 1
-                }}>
-                  We&apos;re finalizing our pricing structure to ensure maximum value for our customers. 
-                  Join our waitlist to be the first to know when pricing is announced.
-                </p>
-              </div>
-              <div className="faq-item" style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
-                borderRadius: '1rem',
-                padding: '1.5rem',
-                border: '1px solid rgba(203, 213, 225, 0.3)',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <div style={{ position: 'absolute', top: '0.5rem', left: '0.5rem', width: '1.5rem', height: '1.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.3rem)' }}></div>
-                <h3 className="faq-title" style={{ 
-                  fontSize: '1.5rem', 
-                  fontWeight: '300', 
-                  color: '#cbd5e1', 
-                  marginBottom: '1rem',
-                  position: 'relative',
-                  zIndex: 1
-                }}>
-                  Is there a free trial?
-                </h3>
-                <p style={{ 
-                  color: '#cbd5e1',
-                  fontWeight: '300',
-                  lineHeight: '1.6',
-                  position: 'relative',
-                  zIndex: 1
-                }}>
-                  Yes! We&apos;ll offer a comprehensive free trial so you can experience the power 
-                  of AURORA9&apos;s AI automation before making a commitment.
-                </p>
-              </div>
-              <div className="faq-item" style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
-                borderRadius: '1rem',
-                padding: '1.5rem',
-                border: '1px solid rgba(203, 213, 225, 0.3)',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <div style={{ position: 'absolute', top: '0.5rem', left: '0.5rem', width: '1.5rem', height: '1.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.3rem)' }}></div>
-                <h3 className="faq-title" style={{ 
-                  fontSize: '1.5rem', 
-                  fontWeight: '300', 
-                  color: '#cbd5e1', 
-                  marginBottom: '1rem',
-                  position: 'relative',
-                  zIndex: 1
-                }}>
-                  Can I upgrade or downgrade plans?
-                </h3>
-                <p style={{ 
-                  color: '#cbd5e1',
-                  fontWeight: '300',
-                  lineHeight: '1.6',
-                  position: 'relative',
-                  zIndex: 1
-                }}>
-                  Absolutely! You can change your plan at any time to match your business needs. 
-                  Our flexible pricing ensures you only pay for what you use.
-                </p>
-              </div>
-              <div className="faq-item" style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
-                borderRadius: '1rem',
-                padding: '1.5rem',
-                border: '1px solid rgba(203, 213, 225, 0.3)',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <div style={{ position: 'absolute', top: '0.5rem', left: '0.5rem', width: '1.5rem', height: '1.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.3rem)' }}></div>
-                <h3 className="faq-title" style={{ 
-                  fontSize: '1.5rem', 
-                  fontWeight: '300', 
-                  color: '#cbd5e1', 
-                  marginBottom: '1rem',
-                  position: 'relative',
-                  zIndex: 1
-                }}>
-                  What support is included?
-                </h3>
-                <p style={{ 
-                  color: '#cbd5e1',
-                  fontWeight: '300',
-                  lineHeight: '1.6',
-                  position: 'relative',
-                  zIndex: 1
-                }}>
-                  All plans include 24/7 customer support. Professional and Enterprise plans 
-                  get priority support and dedicated account management.
-                </p>
-              </div>
+                  <h3 className="faq-title" style={{ fontSize: '1.5rem', fontWeight: '300', color: '#cbd5e1', marginBottom: '1rem' }}>
+                    {faq.q}
+                  </h3>
+                  <p style={{ color: '#cbd5e1', fontWeight: '300', lineHeight: '1.6' }}>
+                    {faq.a}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -732,59 +334,26 @@ export default function PricingPage() {
             position: 'relative',
             overflow: 'hidden'
           }}>
-            {/* Floating particles */}
-            <div style={{ position: 'absolute', top: '1rem', left: '1rem', width: '2rem', height: '2rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
-            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', width: '3rem', height: '3rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', filter: 'blur(0.5rem)' }}></div>
-            
-            <h2 style={{ 
-              fontSize: '3rem', 
-              fontWeight: '300', 
-              color: '#cbd5e1', 
-              marginBottom: '1.5rem',
-              position: 'relative',
-              zIndex: 1
-            }}>
+            <h2 style={{ fontSize: '3rem', fontWeight: '300', color: '#cbd5e1', marginBottom: '1.5rem', position: 'relative', zIndex: 1 }}>
               Ready to Transform Your Business?
             </h2>
-            <p style={{ 
-              fontSize: '1.25rem', 
-              color: '#cbd5e1',
-              fontWeight: '300',
-              lineHeight: '1.6',
-              marginBottom: '2rem',
-              maxWidth: '48rem',
-              margin: '0 auto 2rem',
+            <p style={{ fontSize: '1.25rem', color: '#cbd5e1', fontWeight: '300', lineHeight: '1.6', marginBottom: '2rem', maxWidth: '48rem', margin: '0 auto 2rem', position: 'relative', zIndex: 1 }}>
+              Join thousands of entrepreneurs who are revolutionizing their e-commerce operations with AURORA9&apos;s intelligent AI agents.
+            </p>
+            <a href="/contact-us" style={{
+              display: 'inline-block',
+              padding: '1rem 2rem',
+              borderRadius: '0.5rem',
+              fontWeight: '600',
+              textAlign: 'center',
+              textDecoration: 'none',
+              background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+              color: 'white',
+              border: 'none',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
               position: 'relative',
               zIndex: 1
             }}>
-              Join thousands of entrepreneurs who are revolutionizing their e-commerce operations with AURORA9&apos;s intelligent AI agents.
-            </p>
-            <a 
-              href="/contact-us" 
-              style={{
-                display: 'inline-block',
-                padding: '1rem 2rem',
-                borderRadius: '0.5rem',
-                fontWeight: '600',
-                textAlign: 'center',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-                background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-                color: 'white',
-                border: 'none',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-                position: 'relative',
-                zIndex: 1
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)';
-              }}
-            >
               Join Waitlist Today
             </a>
           </div>
