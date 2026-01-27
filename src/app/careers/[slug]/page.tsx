@@ -137,7 +137,7 @@ export default function JobDetailsPage() {
               <div className="flex justify-center py-4">
                 {/* 👇👇👇 PASTE YOUR SITE KEY HERE 👇👇👇 */}
                 <ReCAPTCHA
-                  sitekey="6LcwQU0sAAAAAIzDE3ckEvvfadGZxrPd3ExIYuXX" 
+                  sitekey="6LdmaVgsAAAAANAqCf2Q_KAo-Nixt0euiswCoPuF" 
                   onChange={(token) => setCaptchaToken(token)}
                   theme="dark"
                 />
