@@ -1,5 +1,3 @@
-// ✅ src/components/navigation/Footer.tsx
-
 import Link from 'next/link';
 import DarkModeToggle from '../ui/DarkModeToggle';
 
@@ -50,7 +48,8 @@ export default function Footer() {
             <FooterLink href="/investors">Investors</FooterLink>
             <FooterLink href="/press">Press</FooterLink>
             <FooterLink href="/privacy-policy">Privacy Policy</FooterLink>
-            <FooterLink href="/sitemap">Sitemap</FooterLink>
+            {/* UPDATED LINK BELOW */}
+            <FooterLink href="/site-index">Sitemap</FooterLink>
             <FooterLink href="/terms">Terms</FooterLink>
           </div>
 

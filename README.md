@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Agentra
 
-## Getting Started
+A modern **Next.js 14** landing site prototype for an AI-powered agentic product called **Agentra**. This repo contains a demo website UI built with React/Next.js, Tailwind-style CSS, and structured content pages for marketing, blog, careers, pricing, and support.
 
-First, run the development server:
+## 🚀 What’s included
+
+- **Next.js App Router** (app/ directory) with static pages and nested routes
+- **React components** for navigation, hero sections, feature sections, and forms
+- **Reusable UI patterns** (Navbar, Footer, sections, forms)
+- **Client-side forms** for contact, careers, investor outreach, and waitlist signups
+- **SEO-ready pages** (sitemap, robots, metadata via Next.js)
+
+## 🧩 Project structure
+
+- `src/app/` - Next.js pages and route segments
+- `src/app/components/` - shared UI components (navigation, sections, forms)
+- `public/` - static assets (robots.txt, verification files)
+- `package.json` - dependencies & scripts
+- `next.config.ts` - Next.js configuration
+
+## 🛠️ Setup & commands
 
 ```bash
+# install dependencies
+npm install
+
+# run dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# build for production
+npm run build
+
+# run production build locally
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✅ Notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- This repo is structured as a **marketing/demo site**, not a full production backend.
+- The forms are presentational; you’ll need to wire them into a backend/API to capture submissions.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

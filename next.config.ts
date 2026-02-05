@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+
+  // 👇 ADDED: This silences the Turbopack/Webpack conflict error
+  turbopack: {},
+
   experimental: {
     optimizePackageImports: ['lucide-react'],
   },

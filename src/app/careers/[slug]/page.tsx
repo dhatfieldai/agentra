@@ -4,11 +4,9 @@ import { useState } from "react";
 import { jobs, Job } from "../jobs";
 import { notFound, useParams } from "next/navigation";
 import { Toaster, toast } from "react-hot-toast";
-import ReCAPTCHA from "react-google-recaptcha";
 
 export default function JobDetailsPage() {
   const { slug } = useParams();
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
 
@@ -19,21 +17,13 @@ export default function JobDetailsPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    if (!captchaToken) {
-      toast.error("Please verify you are human.");
-      return;
-    }
-
     setIsSubmitting(true);
+
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // Explicitly append the captcha token
-    formData.append("g-recaptcha-response", captchaToken);
-
     try {
-      // Direct submission to Formspree
+      // Direct submission to Formspree (No custom captcha token needed)
       const response = await fetch("https://formspree.io/f/xqabvgdv", {
         method: "POST",
         body: formData,
@@ -47,11 +37,9 @@ export default function JobDetailsPage() {
       if (response.ok) {
         setSucceeded(true);
         toast.success("Application submitted successfully! ✅");
-        setCaptchaToken(null);
         form.reset();
       } else {
         console.error("Formspree Error:", result);
-        // Show the actual error message from Formspree if available
         const errorMessage = result.error || "Submission failed. Please check your file size (Max 10MB).";
         toast.error(errorMessage);
       }
@@ -134,18 +122,11 @@ export default function JobDetailsPage() {
                 <input type="file" name="coverLetter" accept=".pdf,.doc,.docx" className="w-full px-4 py-3 rounded-lg text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-500 file:text-white hover:file:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(59, 130, 246, 0.3)' }} />
               </div>
 
-              <div className="flex justify-center py-4">
-                {/* 👇👇👇 PASTE YOUR SITE KEY HERE 👇👇👇 */}
-                <ReCAPTCHA
-                  sitekey="6LdmaVgsAAAAANAqCf2Q_KAo-Nixt0euiswCoPuF" 
-                  onChange={(token) => setCaptchaToken(token)}
-                  theme="dark"
-                />
-              </div>
+              {/* RECAPTCHA IS REMOVED HERE */}
 
               <button
                 type="submit"
-                disabled={isSubmitting || !captchaToken} 
+                disabled={isSubmitting} 
                 className="w-full px-6 py-4 text-white text-body font-medium rounded-lg transition-all duration-300 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ 
                   background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
